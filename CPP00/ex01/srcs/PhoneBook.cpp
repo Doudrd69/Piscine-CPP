@@ -1,8 +1,5 @@
 #include <iostream>
 #include "../includes/PhoneBook.hpp"
-#include "../includes/Contact.hpp"
-
-Contact	contact;
 
 PhoneBook::PhoneBook() {
 	std::cout << "Constructor called" << std::endl;
@@ -15,11 +12,19 @@ PhoneBook::~PhoneBook() {
 	return ;
 }
 
-void	PhoneBook::add_contact(void)
+void	PhoneBook::add_contact(Contact& contact)
 {
 	std::cout << "== Please register contact informations ==" << std::endl;
 	std::cout << "First name : ";
 	std::cin >> contact.first_name;
+	std::cout << "Last name : ";
+	std::cin >> contact.last_name;
+	std::cout << "Nick name : ";
+	std::cin >> contact.nickname;
+	std::cout << "Phone number : ";
+	std::cin >> contact.phone_number;
+	std::cout << "Darkest secret : ";
+	std::cin >> contact.secret;
 	return ;
 }
 
