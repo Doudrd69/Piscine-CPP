@@ -33,11 +33,7 @@ int	main(int argc, char *argv[])
 		else if (str.compare("HELP") == 0)
 			std::cout << "List of valid command : ADD / SEARCH / EXIT" << std::endl;
 		else if (str.compare("EXIT") == 0)
-		{
-			for (int i = 0; i < 7; i++)
-				std::cout << repertory.contact[i].first_name << std::endl;
 			break ;
-		}
 		else
 			std::cout << "Error : invalid command : to see valid command use HELP" << std::endl;
 		std::cout << "Enter command : ";
@@ -45,5 +41,4 @@ int	main(int argc, char *argv[])
 	return 0;
 }
 
-//petit soucis a l'affichage des infos de contact
 //gerer si erreur a la creation du contact

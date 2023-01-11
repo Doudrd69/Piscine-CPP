@@ -69,6 +69,7 @@ void	PhoneBook::search_contact(Contact contact[8], int size)
 			std::cout << "Invalid index : index is an INT" << std::endl;
 			return ;
 		}
+		std::cin.ignore();
 		if (i >= 0 && i < size)
 			print_contact(contact[i]);
 		else
