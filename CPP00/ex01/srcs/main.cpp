@@ -42,5 +42,3 @@ int	main(int argc, char *argv[])
 	}
 	return 0;
 }
-
-//gerer si erreur a la creation du contact
