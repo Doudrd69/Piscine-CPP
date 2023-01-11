@@ -13,7 +13,7 @@ class PhoneBook {
 		PhoneBook();
 		~PhoneBook();
 
-		void	add_contact(Contact& contact, int i);
+		int		add_contact(Contact& contact, int i);
 		void	search_contact(Contact contact[7], int size);
 };
 

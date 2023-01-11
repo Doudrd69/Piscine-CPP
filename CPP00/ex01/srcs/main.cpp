@@ -23,10 +23,12 @@ int	main(int argc, char *argv[])
 				i = 0;
 				check = 1;
 			}
-			repertory.add_contact(repertory.contact[i], i);
-			if (repertory.size < 8)
-				repertory.size++;
-			i++;
+			if (repertory.add_contact(repertory.contact[i], i) == 0)
+			{
+				if (repertory.size < 8)
+					repertory.size++;
+				i++;
+			}
 		}
 		else if (str.compare("SEARCH") == 0)
 			repertory.search_contact(repertory.contact, repertory.size);

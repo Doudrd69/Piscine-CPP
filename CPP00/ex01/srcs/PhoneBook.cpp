@@ -18,31 +18,31 @@ PhoneBook::~PhoneBook() {
 	return ;
 }
 
-void	PhoneBook::add_contact(Contact& contact, int i)
+int	PhoneBook::add_contact(Contact& contact, int i)
 {
 	std::cout << "== Please register contact informations ==" << std::endl;
 	std::cout << "First name : ";
 	std::getline(std::cin, contact.first_name);
 	if (check_line_is_empty_to_return(contact.first_name) == 1)
-		return ;
+		return 1;
 	std::cout << "Last name : ";
 	std::getline(std::cin, contact.last_name);
 	if (check_line_is_empty_to_return(contact.last_name) == 1)
-		return ;
+		return 1;
 	std::cout << "Nick name : ";
 	std::getline(std::cin, contact.nickname);
 	if (check_line_is_empty_to_return(contact.nickname) == 1)
-		return ;
+		return 1;
 	std::cout << "Phone number : ";
 	std::getline(std::cin, contact.phone_number);
 	if (check_line_is_empty_to_return(contact.phone_number) == 1)
-		return ;
+		return 1;
 	std::cout << "Darkest secret : ";
 	std::getline(std::cin, contact.secret);
 	if (check_line_is_empty_to_return(contact.secret) == 1)
-		return ;
+		return 1;
 	contact.index = i;
-	return ;
+	return 0;
 }
 
 void	PhoneBook::search_contact(Contact contact[8], int size)
@@ -150,7 +150,7 @@ int	check_line_is_empty_to_return(std::string str)
 {
 	if (str.empty())
 	{
-		std::cout << "Contact information can't be empty, please try again" << std::endl;
+		std::cout << "Error : contact information can't be empty" << std::endl;
 		return (1);
 	}
 	return (0);
