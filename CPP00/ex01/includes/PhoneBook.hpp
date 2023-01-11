@@ -7,13 +7,14 @@ class PhoneBook {
 
 	public :
 
-		int		size;
+		int			size;
+		Contact		contact[8];
 
 		PhoneBook();
 		~PhoneBook();
 
-		void	add_contact(Contact& contact);
-		void	search_contact(void);
+		void	add_contact(Contact& contact, int i);
+		void	search_contact(Contact contact[7], int size);
 };
 
 #endif

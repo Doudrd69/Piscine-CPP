@@ -9,38 +9,41 @@ int	main(int argc, char *argv[])
 {
 	(void)argc;
 	(void)argv;
-	int		index = 0;
-	string	str;
-
+	int			check = 0, i = 0;
+	std::string	str;
 	PhoneBook	repertory;
-	Contact		contact[7];
 
-	while (1)
+	std::cout << "Enter command : ";
+	while (std::getline(std::cin, str))
 	{
-		std::cout << "Enter command : ";
-		std::cin >> str;
 		if (str.compare("ADD") == 0)
 		{
-			if (index < 8)
+			if (repertory.size == 8 && check == 0)
 			{
-				repertory.add_contact(contact[index]);
-				index++;
+				i = 0;
+				check = 1;
 			}
-			else
-				std::cout << "limit size reached" << std::endl;
+			repertory.add_contact(repertory.contact[i], i);
+			if (repertory.size < 8)
+				repertory.size++;
+			i++;
 		}
 		else if (str.compare("SEARCH") == 0)
-			repertory.search_contact();
+			repertory.search_contact(repertory.contact, repertory.size);
 		else if (str.compare("HELP") == 0)
 			std::cout << "List of valid command : ADD / SEARCH / EXIT" << std::endl;
 		else if (str.compare("EXIT") == 0)
 		{
 			for (int i = 0; i < 7; i++)
-				std::cout << contact[i].first_name << std::endl;
+				std::cout << repertory.contact[i].first_name << std::endl;
 			break ;
 		}
 		else
 			std::cout << "Error : invalid command : to see valid command use HELP" << std::endl;
+		std::cout << "Enter command : ";
 	}
 	return 0;
 }
+
+//petit soucis a l'affichage des infos de contact
+//gerer si erreur a la creation du contact

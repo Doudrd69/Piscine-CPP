@@ -9,11 +9,12 @@ class Contact {
 
 	public :
 
-		string	first_name;
-		string	last_name;
-		string	nickname;
-		string	phone_number;
-		string	secret;
+		int			index;
+		std::string	first_name;
+		std::string	last_name;
+		std::string	nickname;
+		std::string	phone_number;
+		std::string	secret;
 
 		Contact();
 		~Contact();
