@@ -1,20 +1,14 @@
 #include <iostream>
 #include "../includes/PhoneBook.hpp"
 
-void	print_contact(Contact& contact);
-void	print_nickname(std::string str);
-void	print_last_name(std::string str);
-void	print_first_name(std::string str);
-int		check_line_is_empty_to_return(std::string str);
-
 PhoneBook::PhoneBook() {
-	std::cout << "Constructor called" << std::endl;
+	//std::cout << "Constructor called" << std::endl;
 	this->size = 0;
 	return ;
 }
 
 PhoneBook::~PhoneBook() {
-	std::cout << "Destructor called" << std::endl;
+	//std::cout << "Destructor called" << std::endl;
 	return ;
 }
 
@@ -79,7 +73,7 @@ void	PhoneBook::search_contact(Contact contact[8], int size)
 	std::cout << "/!\\ Repertory is empty /!\\" << std::endl;
 }
 
-void	print_first_name(std::string str)
+void	PhoneBook::print_first_name(std::string str)
 {
 		int length = str.length();
 		if (length > 10)
@@ -98,7 +92,7 @@ void	print_first_name(std::string str)
 		}
 }
 
-void	print_last_name(std::string str)
+void	PhoneBook::print_last_name(std::string str)
 {
 	int length = str.length();
 	if (length > 10)
@@ -117,7 +111,7 @@ void	print_last_name(std::string str)
 	}
 }
 
-void	print_nickname(std::string str)
+void	PhoneBook::print_nickname(std::string str)
 {
 	int length = str.length();
 	if (length > 10)
@@ -136,7 +130,7 @@ void	print_nickname(std::string str)
 	}
 }
 
-void	print_contact(Contact& contact)
+void	PhoneBook::print_contact(Contact& contact)
 {
 	std::cout << "\nFirst name     : " << contact.first_name << std::endl;
 	std::cout << "Last name      : " << contact.last_name << std::endl;
@@ -146,7 +140,7 @@ void	print_contact(Contact& contact)
 	return ;
 }
 
-int	check_line_is_empty_to_return(std::string str)
+int	PhoneBook::check_line_is_empty_to_return(std::string str)
 {
 	if (str.empty())
 	{
