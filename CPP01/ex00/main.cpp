@@ -7,9 +7,8 @@ int	main()
 
 	zonz = zombie.newZombie("Obi-Wan");
 	zombie.setName("Qui Gon");
+	zonz->announce();
 	zombie.announce();
 	delete(zonz);
 	return 0;
 }
-
-//Un zombie = une classe crée
