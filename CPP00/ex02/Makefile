@@ -1,7 +1,7 @@
 CC = c++
 FLAGS = -Wall -Wextra -Werror
 
-SRCS =	srcs/main.cpp		\
+SRCS =	srcs/tests.cpp		\
 		srcs/Account.cpp
 
 INCS =	includes/Account.hpp
@@ -11,7 +11,7 @@ OBJS = $(SRCS:.cpp=.o)
 %.o : %.cpp $(INCS)
 	$(CC) $(FLAGS) -std=c++98 -c $< -o $@
 
-NAME = test
+NAME = account
 
 all : $(NAME)
 

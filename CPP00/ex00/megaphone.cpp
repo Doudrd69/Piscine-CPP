@@ -1,7 +1,5 @@
 #include <iostream>
 
-int	issou(void);
-
 int	main(int argc, char *argv[])
 {
 	int	i, j, length;

@@ -3,12 +3,8 @@
 #include "../includes/PhoneBook.hpp"
 #include "../includes/Contact.hpp"
 
-using namespace std;
-
-int	main(int argc, char *argv[])
+int	main(void)
 {
-	(void)argc;
-	(void)argv;
 	int			check = 0, i = 0;
 	std::string	str;
 	PhoneBook	repertory;
