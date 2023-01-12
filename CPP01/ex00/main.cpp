@@ -7,6 +7,7 @@ int	main()
 
 	zonz = zombie.newZombie("Obi-Wan");
 	zombie.setName("Qui Gon");
+	zombie.randomChump("Anakin");
 	zonz->announce();
 	zombie.announce();
 	delete(zonz);
