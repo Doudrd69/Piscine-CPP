@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "../includes/PhoneBook.hpp"
 
 PhoneBook::PhoneBook() {
@@ -82,21 +83,21 @@ void	PhoneBook::search_contact(Contact contact[8], int size)
 
 void	PhoneBook::print_first_name(std::string str)
 {
-		int length = str.length();
-		if (length > 10)
-		{
-			std::string	tmp = str;
-			tmp.resize(9);
-			while (length++ < 10)
-				std::cout << ' ';
-			std::cout << tmp << '.' << '|';
-		}
-		else
-		{
-			while (length++ < 10)
-				std::cout << ' ';
-			std::cout << str << '|';
-		}
+	int length = str.length();
+	if (length > 10)
+	{
+		std::string	tmp = str;
+		tmp.resize(9);
+		while (length++ < 10)
+			std::cout << ' ';
+		std::cout << tmp << '.' << '|';
+	}
+	else
+	{
+		while (length++ < 10)
+			std::cout << ' ';
+		std::cout << str << '|';
+	}
 }
 
 void	PhoneBook::print_last_name(std::string str)
