@@ -14,28 +14,35 @@ PhoneBook::~PhoneBook() {
 
 int	PhoneBook::add_contact(Contact& contact, int i)
 {
+	std::string	tmp;
+
 	std::cout << "== Please register contact informations ==" << std::endl;
 	std::cout << "First name : ";
-	std::getline(std::cin, contact.first_name);
-	if (check_line_is_empty_to_return(contact.first_name) == 1)
+	std::getline(std::cin, tmp);
+	contact.setFirstName(tmp);
+	if (check_line_is_empty_to_return(contact.getFirstName()) == 1)
 		return 1;
 	std::cout << "Last name : ";
-	std::getline(std::cin, contact.last_name);
-	if (check_line_is_empty_to_return(contact.last_name) == 1)
+	std::getline(std::cin, tmp);
+	contact.setLastName(tmp);
+	if (check_line_is_empty_to_return(contact.getLastName()) == 1)
 		return 1;
 	std::cout << "Nick name : ";
-	std::getline(std::cin, contact.nickname);
-	if (check_line_is_empty_to_return(contact.nickname) == 1)
+	std::getline(std::cin, tmp);
+	contact.setNickname(tmp);
+	if (check_line_is_empty_to_return(contact.getNickname()) == 1)
 		return 1;
 	std::cout << "Phone number : ";
-	std::getline(std::cin, contact.phone_number);
-	if (check_line_is_empty_to_return(contact.phone_number) == 1)
+	std::getline(std::cin, tmp);
+	contact.setPhoneNumber(tmp);
+	if (check_line_is_empty_to_return(contact.getPhoneNumber()) == 1)
 		return 1;
 	std::cout << "Darkest secret : ";
-	std::getline(std::cin, contact.secret);
-	if (check_line_is_empty_to_return(contact.secret) == 1)
+	std::getline(std::cin, tmp);
+	contact.setSecret(tmp);
+	if (check_line_is_empty_to_return(contact.getSecret()) == 1)
 		return 1;
-	contact.index = i;
+	contact.setIndex(i); //setIndex
 	return 0;
 }
 
@@ -49,10 +56,10 @@ void	PhoneBook::search_contact(Contact contact[8], int size)
 		std::cout << "=  INDEX   =  F_NAME  =  L_NAME   =  N_NAME  =" << std::endl;
 		for (int i = 0; i < size; i++)
 		{
-			std::cout << '|' << "         " << contact[i].index << "|";
-			print_first_name(contact[i].first_name);
-			print_last_name(contact[i].last_name);
-			print_nickname(contact[i].nickname);
+			std::cout << '|' << "         " << contact[i].getIndex() << "|";
+			print_first_name(contact[i].getFirstName());
+			print_last_name(contact[i].getLastName());
+			print_nickname(contact[i].getNickname());
 		}
 		std::cout << "\nPlease enter contact index to see his informations : ";
 		std::cin >> i;
@@ -132,11 +139,11 @@ void	PhoneBook::print_nickname(std::string str)
 
 void	PhoneBook::print_contact(Contact& contact)
 {
-	std::cout << "\nFirst name     : " << contact.first_name << std::endl;
-	std::cout << "Last name      : " << contact.last_name << std::endl;
-	std::cout << "Nickname       : " << contact.nickname << std::endl;
-	std::cout << "Phone numer    : " << contact.phone_number << std::endl;
-	std::cout << "Darkest secret : " << contact.secret << std::endl;
+	std::cout << "\nFirst name     : " << contact.getFirstName() << std::endl;
+	std::cout << "Last name      : " << contact.getLastName() << std::endl;
+	std::cout << "Nickname       : " << contact.getNickname() << std::endl;
+	std::cout << "Phone numer    : " << contact.getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret : " << contact.getSecret() << std::endl;
 	return ;
 }
 
@@ -148,4 +155,25 @@ int	PhoneBook::check_line_is_empty_to_return(std::string str)
 		return (1);
 	}
 	return (0);
+}
+
+int	PhoneBook::getSize(void)
+{
+	return (this->size);
+}
+
+void	PhoneBook::setSize(void)
+{
+	this->size += 1;
+	return ;
+}
+
+Contact& PhoneBook::getOneContact(int i)
+{
+	return (this->contact[i]);
+}
+
+Contact* PhoneBook::getContact(void)
+{
+	return (this->contact);
 }

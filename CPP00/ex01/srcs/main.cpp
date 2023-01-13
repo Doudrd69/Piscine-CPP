@@ -14,20 +14,20 @@ int	main(void)
 	{
 		if (str.compare("ADD") == 0)
 		{
-			if (repertory.size == 8 && check == 0)
+			if (repertory.getSize() == 8 && check == 0)
 			{
 				i = 0;
 				check = 1;
 			}
-			if (repertory.add_contact(repertory.contact[i], i) == 0)
+			if (repertory.add_contact(repertory.getOneContact(i), i) == 0)
 			{
-				if (repertory.size < 8)
-					repertory.size++;
+				if (repertory.getSize() < 8)
+					repertory.setSize();
 				i++;
 			}
 		}
 		else if (str.compare("SEARCH") == 0)
-			repertory.search_contact(repertory.contact, repertory.size);
+			repertory.search_contact(repertory.getContact(), repertory.getSize());
 		else if (str.compare("HELP") == 0)
 			std::cout << "List of valid command : ADD / SEARCH / EXIT" << std::endl;
 		else if (str.compare("EXIT") == 0)
@@ -38,3 +38,7 @@ int	main(void)
 	}
 	return 0;
 }
+
+//passer les attributs en private dans les class
+	//creer des getters/setters
+//utiliser iomanip pour l'affichage (dans search contact pour troncer si chaine trop longue)
