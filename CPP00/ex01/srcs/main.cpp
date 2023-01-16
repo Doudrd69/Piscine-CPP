@@ -38,7 +38,3 @@ int	main(void)
 	}
 	return 0;
 }
-
-//passer les attributs en private dans les class
-	//creer des getters/setters
-//utiliser iomanip pour l'affichage (dans search contact pour troncer si chaine trop longue)

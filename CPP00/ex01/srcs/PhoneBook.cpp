@@ -54,13 +54,14 @@ void	PhoneBook::search_contact(Contact contact[8], int size)
 	if (size > 0)
 	{
 		std::cout << "\n==>              Contact list             <==" << std::endl;
-		std::cout << "=  INDEX   =  F_NAME  =  L_NAME   =  N_NAME  =" << std::endl;
+		std::cout << "|  INDEX   |  F_NAME  |  L_NAME  |  N_NAME  |" << std::endl;
 		for (int i = 0; i < size; i++)
 		{
 			std::cout << '|' << "         " << contact[i].getIndex() << "|";
 			print_first_name(contact[i].getFirstName());
 			print_last_name(contact[i].getLastName());
 			print_nickname(contact[i].getNickname());
+			std::cout << std::endl;
 		}
 		std::cout << "\nPlease enter contact index to see his informations : ";
 		std::cin >> i;
@@ -83,58 +84,58 @@ void	PhoneBook::search_contact(Contact contact[8], int size)
 
 void	PhoneBook::print_first_name(std::string str)
 {
+	std::ios init(NULL);
+	init.copyfmt(std::cout);
+	std::cout << std::setw(10);
 	int length = str.length();
-	if (length > 10)
+	if (length > 8)
 	{
-		std::string	tmp = str;
-		tmp.resize(9);
-		while (length++ < 10)
-			std::cout << ' ';
-		std::cout << tmp << '.' << '|';
+		std::cout << std::setfill('.') << std::left;
+		std::cout << str.substr(0, 9) << "|";
+		std::cout.copyfmt(init);
 	}
 	else
 	{
-		while (length++ < 10)
-			std::cout << ' ';
 		std::cout << str << '|';
+		std::cout.copyfmt(init);
 	}
 }
 
 void	PhoneBook::print_last_name(std::string str)
 {
+	std::ios init(NULL);
+	init.copyfmt(std::cout);
+	std::cout << std::setw(10);
 	int length = str.length();
-	if (length > 10)
+	if (length > 8)
 	{
-		std::string	tmp = str;
-		tmp.resize(9);
-		while (length++ < 10)
-			std::cout << ' ';
-		std::cout << tmp << '.' << '|';
+		std::cout << std::setfill('.') << std::left;
+		std::cout << str.substr(0, 9) << "|";
+		std::cout.copyfmt(init);
 	}
 	else
 	{
-		while (length++ < 10)
-			std::cout << ' ';
 		std::cout << str << '|';
+		std::cout.copyfmt(init);
 	}
 }
 
 void	PhoneBook::print_nickname(std::string str)
 {
+	std::ios init(NULL);
+	init.copyfmt(std::cout);
+	std::cout << std::setw(10);
 	int length = str.length();
-	if (length > 10)
+	if (length > 8)
 	{
-		std::string	tmp = str;
-		tmp.resize(9);
-		while (length++ < 10)
-			std::cout << ' ';
-		std::cout << tmp << '.' << '|' << std::endl;
+		std::cout << std::setfill('.') << std::left;
+		std::cout << str.substr(0, 9) << "|";
+		std::cout.copyfmt(init);
 	}
 	else
 	{
-		while (length++ < 10)
-			std::cout << ' ';
-		std::cout << str << '|' << std::endl;
+		std::cout << str << '|';
+		std::cout.copyfmt(init);
 	}
 }
 
