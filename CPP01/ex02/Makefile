@@ -1,16 +1,11 @@
 CC = c++
 FLAGS = -Wall -Wextra -Werror
 
-SRCS =	srcs/main.cpp		\
-		srcs/Zombie.cpp		\
-		srcs/newZombie.cpp	\
-		srcs/randomChump.cpp
-
-INCS =	includes/Zombie.hpp
+SRCS =	main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-%.o : %.cpp $(INCS)
+%.o : %.cpp
 	$(CC) $(FLAGS) -std=c++98 -c $< -o $@
 
 NAME = brainz
@@ -18,7 +13,7 @@ NAME = brainz
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(FLAGS) -I $(INCS) -std=c++98 -o $(NAME) $(OBJS)
+	$(CC) $(FLAGS) -std=c++98 -o $(NAME) $(OBJS)
 
 clean :
 	rm -f $(OBJS)
