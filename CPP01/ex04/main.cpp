@@ -22,13 +22,13 @@ int main(int argc, char *argv[])
 		if (inFile && outFile)
 		{
 			outFile.open(newFileReplaceName);
-			std::cout << argv[1] << " [opened]" << std::endl;		//debug
-			std::cout << newFileReplaceName << " [created]" << std::endl;		//debug
+			std::cout << argv[1] << " [opened]" << std::endl;
+			std::cout << newFileReplaceName << " [created]" << std::endl;
 			while (std::getline(inFile, str))
 			{
-				if ((pos = str.find(strToFind)) == std::string::npos)						//si je trouve pas d'occurence je peux direct copier la ligne
+				if ((pos = str.find(strToFind)) == std::string::npos)			//si pas d'occurence on peut copier la ligne
 					outFile << str << std::endl;
-				else
+				else															//sinon on va d'abord faire le(s) remplacement(s) puis copier la ligne
 				{
 					while ((pos = str.find(strToFind)) != std::string::npos)
 					{
@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
 			}
 			inFile.close();
 			outFile.close();
-			std::cout << argv[1] << " [closed]" << std::endl;		//debug
-			std::cout << newFileReplaceName << " [closed]" << std::endl;		//debug
+			std::cout << argv[1] << " [closed]" << std::endl;
+			std::cout << newFileReplaceName << " [closed]" << std::endl;
 			return (0);
 		}
 		std::cout << "Error : failed to open file" << std::endl;
@@ -51,9 +51,3 @@ int main(int argc, char *argv[])
 	std::cout << "Error : program needs 3 parameters : file / string_to_replace / new_string" << std::endl;
 	return (1);
 }
-
-//regarder du cote de std::string.insert
-
-//on va parcourir ligne par ligne le fichier avec getline
-	//si on ne toruve aucune occurence --> on copie la ligne dans le nouveau fichier
-	//si on trouve une occurence on la remplace par strNew puis on copie la ligne dans le fichier
