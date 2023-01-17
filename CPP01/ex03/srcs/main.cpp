@@ -10,7 +10,6 @@ int main()
 		HumanA bob("Bob", club);
 		bob.attack();
 		club.setType("some other type of club");
-		//type dans Weapon a bien changé
 		bob.attack();
 	}
 	{

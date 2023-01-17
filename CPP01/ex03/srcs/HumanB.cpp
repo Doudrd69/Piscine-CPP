@@ -1,24 +1,20 @@
 #include "../includes/HumanB.hpp"
 
-HumanB::HumanB(std::string name)
-{
-	this->name = name;
-	return ;
-}
+HumanB::HumanB(std::string name) : name(name), mWeapon(nullptr) {}
 
 HumanB::~HumanB()
 {
 	return ;
 }
 
-void	HumanB::setWeapon(Weapon weapon)
+void	HumanB::setWeapon(Weapon& weapon)
 {
-	this->weapon = weapon.getType();
+	mWeapon = &weapon;
 	return ;
 }
 
 void	HumanB::attack()
 {
-	std::cout << this->name << " attacks with their " << this->weapon << std::endl;
+	std::cout << this->name << " attacks with their " << mWeapon->getType() << std::endl;
 	return ;
 }
