@@ -6,12 +6,18 @@ class Fixed {
 	public :
 
 		Fixed();
+		Fixed(const int intValue);
+		Fixed(const float floatValue);
 		Fixed(const Fixed& other);				//constructeur de recopie
-		void operator=(const Fixed& other);	//surcharge de l operateur d affectation
+		void operator=(const Fixed& other);		//surcharge de l operateur d affectation
+		friend std::ostream& operator<<(std::ostream& out, const Fixed& obj);
 		~Fixed();
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
+
+		float	toFloat( void ) const;
+		int		toInt( void ) const;
 
 	private :
 
