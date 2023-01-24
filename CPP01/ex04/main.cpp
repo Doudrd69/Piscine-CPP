@@ -19,6 +19,11 @@ int main(int argc, char *argv[])
 		inFile.open(argv[1]);
 		strToFindSize = strToFind.length();
 		strNewSize = strNew.length();
+		if (strToFind.empty() || strNew.empty())
+		{
+			std::cout << "Error : string is empty" << std::endl;
+			return 1;
+		}
 		if (inFile && outFile)
 		{
 			outFile.open(newFileReplaceName);
