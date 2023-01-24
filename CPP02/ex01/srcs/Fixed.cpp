@@ -2,11 +2,6 @@
 #include <cmath>
 #include "../includes/Fixed.hpp"
 
-// #define MAKE_INT_FIXED(x) ((x) << FRACT_BITS)
-// #define MAKE_FLOAT_FIXED(x) ((int_fixed)((x) * FIXED_POINT_ONE))
-// #define MAKE_FIXED_INT(x) ((x) >> FRACT_BITS)
-// #define MAKE_FIXED_FLOAT(x) (((float)(x)) / FIXED_POINT_ONE)
-
 /*********************************************************/
 /*                    CONSTRUCTOR                        */
 /*********************************************************/
@@ -20,20 +15,17 @@ Fixed::Fixed() {
 
 Fixed::Fixed(const int intValue)
 {
-	//convertir en virgule fixe
 	std::cout << "Int constructor called" << std::endl;
-	this->_fixedValue = (intValue * (1 << this->_bits));
-	this->_fixedValue = this->_fixedValue / (1 << _bits);
+	this->_fixedValue = intValue << _bits;
 	return ;
 }
 
 Fixed::Fixed(const float floatValue)
 {
-	//convertir en virgule fixe
 	std::cout << "Float constructor called";
-	std::cout << " -- convert : " << floatValue << std::endl;
-	this->_fixedValue = floatValue * (1 << _bits);
-	this->_fixedValue = this->_fixedValue / (1 << _bits);
+	//std::cout << " -- value = " << floatValue << " / _bits = " << _bits;
+	_fixedValue = roundf(floatValue * (1 << _bits));
+	//std::cout << " -- after conversion : " << _fixedValue << std::endl;
 	return ;
 }
 
@@ -53,7 +45,7 @@ void	Fixed::operator=(const Fixed& other) {
 
 std::ostream&	operator<<(std::ostream& out, const Fixed& obj)
 {
-	out << obj._fixedValue << '.' << std::endl;
+	out << obj.toFloat();
 	return out;
 }
 
@@ -80,10 +72,10 @@ void	Fixed::setRawBits(int const raw) {
 
 float	Fixed::toFloat(void) const
 {
-	return ((double)_fixedValue / (double)(1 << _bits));
+	return (float)_fixedValue / (float)(1 << _bits);
 }
 
 int	Fixed::toInt(void) const
 {
-	return 0;
+	return _fixedValue >> _bits;
 }

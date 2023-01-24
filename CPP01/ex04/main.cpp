@@ -9,8 +9,8 @@ int main(int argc, char *argv[])
 		std::ofstream	outFile;
 		std::string		str;
 		std::string		newFileReplaceName = argv[1];
-		std::string		strToFind = argv[2];	//peut etre check si std::string
-		std::string		strNew = argv[3];		//peut etre check si std::string
+		std::string		strToFind = argv[2];
+		std::string		strNew = argv[3];
 		std::size_t		pos;
 		std::size_t		strToFindSize;
 		std::size_t		strNewSize;
@@ -26,11 +26,12 @@ int main(int argc, char *argv[])
 			std::cout << newFileReplaceName << " [created]" << std::endl;
 			while (std::getline(inFile, str))
 			{
-				if ((pos = str.find(strToFind)) == std::string::npos)			//si pas d'occurence on peut copier la ligne
+				pos = 0;
+				if ((pos = str.find(strToFind)) == std::string::npos)
 					outFile << str << std::endl;
-				else															//sinon on va d'abord faire le(s) remplacement(s) puis copier la ligne
+				else
 				{
-					while ((pos = str.find(strToFind)) != std::string::npos)
+					while ((pos = str.find(strToFind, pos)) != std::string::npos)
 					{
 						str.erase(pos, strToFindSize);
 						str.insert(pos, strNew);
