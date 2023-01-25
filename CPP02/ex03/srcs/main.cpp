@@ -12,15 +12,15 @@ int main( void ) {
 	Point c(2.0, 5.0);
 	Point point(3.0, 2.0);
 	
-	std::cout << "A X : " << a.getX() << " Y : " << a.getY() << std::endl;
-	std::cout << "B X : " << b.getX() << " Y : " << b.getY() << std::endl;
-	std::cout << "C X : " << c.getX() << " Y : " << c.getY() << std::endl;
-	std::cout << "POINT X : " << point.getX() << " Y : " << point.getY() << std::endl;
+	std::cout << "Point A coordinates --> x[ " << a.getX() << " ] y[ " << a.getY() << " ]" << std::endl;
+	std::cout << "Point B coordinates --> x[ " << b.getX() << " ] y[ " << b.getY() << " ]" << std::endl;
+	std::cout << "Point C coordinates --> x[ " << c.getX() << " ] y[ " << c.getY() << " ]" << std::endl;
+	std::cout << "Point coordinates   --> x[ " << point.getX() << " ] y[ " << point.getY() << " ]" << std::endl;
 	
 	if (bsp(a, b, c, point) == true)
-		std::cout << "Point is inside the triangle" << std::endl;
+		std::cout << "\nPoint is inside the triangle!" << std::endl;
 	else
-		std::cout << "Point is not inside the triangle" << std::endl;
+		std::cout << "\n /!\\Point is not inside the triangle /!\\" << std::endl;
 	
 	return 0;
 }

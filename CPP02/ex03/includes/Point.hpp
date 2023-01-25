@@ -11,7 +11,7 @@ class Point {
 
 		Point();
 		Point(const float nb1, const float nb2);
-		// Point(const Point& obj);
+		Point(const Point& obj);
 		~Point();
 
 		const Point&	operator=(const Point& obj);

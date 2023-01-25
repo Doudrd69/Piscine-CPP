@@ -20,10 +20,10 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	B = abs(triangleArea(&point, &a, &c));
 	C = abs(triangleArea(&point, &a, &b));
 
-	std::cout << "\nArea TOTAL : " << area << std::endl;
-	std::cout << "\nArea A : " << A << std::endl;
-	std::cout << "\nArea B : " << B << std::endl;
-	std::cout << "\nArea C : " << C << std::endl;
+	std::cout << "\nTotal Area   : " << area << std::endl;
+	std::cout << "Area of PBC  : " << A << std::endl;
+	std::cout << "Area of PAC  : " << B << std::endl;
+	std::cout << "Area of PAB  : " << C << std::endl;
 
 	total = A + B + C;
 	std::cout << "\nArea A+B+C : " << total << std::endl;
