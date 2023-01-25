@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 		if (strToFind.empty() || strNew.empty())
 		{
 			std::cout << "Error : string is empty" << std::endl;
-			return 1;
+			return (1);
 		}
 		if (inFile && outFile)
 		{
