@@ -1,9 +1,11 @@
 CC = c++
 FLAGS = -Wall -Wextra -Werror
 
-SRCS =	srcs/main.cpp		\
-		srcs/ClapTrap.cpp	\
-		srcs/ScavTrap.cpp
+SRCS =	srcs/main.cpp			\
+		srcs/ClapTrap.cpp		\
+		srcs/ScavTrap.cpp		\
+		srcs/FragTrap.cpp		\
+		srcs/DiamondTrap.cpp
 
 INCS =	includes/ClapTrap.hpp
 
@@ -12,7 +14,7 @@ OBJS = $(SRCS:.cpp=.o)
 %.o : %.cpp $(INCS)
 	$(CC) $(FLAGS) -std=c++98 -c $< -o $@
 
-NAME = ScavTrap
+NAME = DiamondTrap
 
 all : $(NAME)
 

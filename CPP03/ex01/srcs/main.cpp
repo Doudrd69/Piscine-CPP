@@ -23,16 +23,19 @@ int	main(void) {
 	std::cout << "\n" << object_1.getName() << " has  : " << object_1.getHitPoints() << " HP / " << object_1.getEnergyPoints() << " EP / " << object_1.getAttackDamage() << " AD" << std::endl;
 	std::cout << object_2.getName() << " has : " << object_2.getHitPoints() << " HP / " << object_2.getEnergyPoints() << " EP / " << object_2.getAttackDamage() << " AD\n" << std::endl;
 
-	object_2.setAttackDamage(100);
+	object_1.setAttackDamage(100);
 
 	std::cout << object_1.getName() << " has  : " << object_1.getHitPoints() << " HP / " << object_1.getEnergyPoints() << " EP / " << object_1.getAttackDamage() << " AD" << std::endl;
 	std::cout << object_2.getName() << " has : " << object_2.getHitPoints() << " HP / " << object_2.getEnergyPoints() << " EP / " << object_2.getAttackDamage() << " AD\n" << std::endl;
 
-	object_2.attack("Anakin");
-	object_1.takeDamage(object_2.getAttackDamage());
+	object_1.attack("Obi-Wan");
+	object_2.takeDamage(object_1.getAttackDamage());
 
 	std::cout << "\n" << object_1.getName() << " has  : " << object_1.getHitPoints() << " HP / " << object_1.getEnergyPoints() << " EP / " << object_1.getAttackDamage() << " AD" << std::endl;
 	std::cout << object_2.getName() << " has : " << object_2.getHitPoints() << " HP / " << object_2.getEnergyPoints() << " EP / " << object_2.getAttackDamage() << " AD\n" << std::endl;
+
+	object_2.attack("Anakin");
+	object_2.guardGate();
 
 	return (0);
 }

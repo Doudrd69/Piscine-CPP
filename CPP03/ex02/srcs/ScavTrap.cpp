@@ -25,6 +25,12 @@ ScavTrap::ScavTrap(const ScavTrap& obj) : ClapTrap(obj) {
 	return ;
 }
 
+void	ScavTrap::operator=(const ScavTrap& obj) {
+
+	(void)obj;
+	return ;
+}
+
 ScavTrap::~ScavTrap() {
 
 	std::cout << "ScavTrap destructor called" << std::endl;
