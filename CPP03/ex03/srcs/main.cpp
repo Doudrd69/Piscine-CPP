@@ -13,7 +13,7 @@ int	main(void) {
 	std::cout << "\n" << object_1.getName() << " has    : " << object_1.getHitPoints() << " HP / " << object_1.getEnergyPoints() << " EP / " << object_1.getAttackDamage() << " AD" << std::endl;
 	std::cout << object_2.getName() << " has   : " << object_2.getHitPoints() << " HP / " << object_2.getEnergyPoints() << " EP / " << object_2.getAttackDamage() << " AD" << std::endl;
 	std::cout << object_3.getName() << " has : " << object_3.getHitPoints() << " HP / " << object_3.getEnergyPoints() << " EP / " << object_3.getAttackDamage() << " AD" << std::endl;
-	std::cout << object_4.getName() << " has : " << object_4.getHitPoints() << " HP / " << object_4.getEnergyPoints() << " EP / " << object_4.getAttackDamage() << " AD\n" << std::endl;
+	std::cout << object_4.getNameDiamondTrap() << " has : " << object_4.getHitPoints() << " HP / " << object_4.getEnergyPoints() << " EP / " << object_4.getAttackDamage() << " AD\n" << std::endl;
 
 	object_1.attack(object_2.getName());
 	object_2.takeDamage(object_1.getAttackDamage());
@@ -34,7 +34,8 @@ int	main(void) {
 
 	std::cout << "\n" << object_1.getName() << " has  : " << object_1.getHitPoints() << " HP / " << object_1.getEnergyPoints() << " EP / " << object_1.getAttackDamage() << " AD" << std::endl;
 	std::cout << object_2.getName() << " has : " << object_2.getHitPoints() << " HP / " << object_2.getEnergyPoints() << " EP / " << object_2.getAttackDamage() << " AD" << std::endl;
-	std::cout << object_3.getName() << " has : " << object_3.getHitPoints() << " HP / " << object_3.getEnergyPoints() << " EP / " << object_3.getAttackDamage() << " AD\n" << std::endl;
+	std::cout << object_3.getName() << " has : " << object_3.getHitPoints() << " HP / " << object_3.getEnergyPoints() << " EP / " << object_3.getAttackDamage() << " AD" << std::endl;
+	std::cout << object_4.getName() << " has : " << object_4.getHitPoints() << " HP / " << object_4.getEnergyPoints() << " EP / " << object_4.getAttackDamage() << " AD\n" << std::endl;
 
 	object_1.setAttackDamage(50);
 	object_3.setAttackDamage(100);
@@ -54,6 +55,7 @@ int	main(void) {
 
 	object_2.attack("Anakin");
 	object_2.guardGate();
+	object_4.whoAmI();
 
 	return (0);
 }

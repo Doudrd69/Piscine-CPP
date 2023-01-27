@@ -26,7 +26,7 @@ class ClapTrap {
 		void		setEnergyPoints(int value);
 		void		setAttackDamage(int value);
 
-	private :
+	protected :
 
 		int			_HitPoints;
 		int			_EnergyPoints;

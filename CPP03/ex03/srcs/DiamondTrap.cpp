@@ -9,19 +9,20 @@ DiamondTrap::DiamondTrap() {
 	return ;
 }
 
-DiamondTrap::DiamondTrap(std::string name) {
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name),
+FragTrap(name) {
 
-	setName(name);
-	setHitPoints(FragTrap::getHitPoints());
-	setEnergyPoints(ScavTrap::getEnergyPoints());
-	setAttackDamage(FragTrap::getAttackDamage());
+	setNameDiamondTrap(name);
+	this->_HitPoints = FragTrap::getHitPoints();
+	this->_EnergyPoints = ScavTrap::getEnergyPoints();
+	this->_AttackDamage = FragTrap::getAttackDamage();
 	std::cout << "DiamondTrap constructor(name) called" << std::endl;
 	return ;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& obj) : FragTrap(obj) {
 
-	(void)obj;
+	std::cout << "DiamondTrap copy constructor called" << std::endl;
 	return ;
 }
 
@@ -34,5 +35,23 @@ void	DiamondTrap::operator=(const DiamondTrap& obj) {
 DiamondTrap::~DiamondTrap() {
 
 	std::cout << "DiamondTrap destructor called" << std::endl;
+	return ;
+}
+
+void	DiamondTrap::setNameDiamondTrap(std::string name) {
+
+	this->_name = name;
+	return ;
+}
+
+std::string	DiamondTrap::getNameDiamondTrap(void) {
+
+	return this->_name;
+}
+
+void	DiamondTrap::whoAmI() {
+
+	std::cout << "My real name : " << this->_name << std::endl;
+	std::cout << "Clap name    : " << ClapTrap::_name << std::endl;
 	return ;
 }
