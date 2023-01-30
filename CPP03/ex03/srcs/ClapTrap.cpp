@@ -4,24 +4,23 @@
 /*                 CONSTRUCTORS                */
 /***********************************************/
 
-ClapTrap::ClapTrap() : _HitPoints(0), _EnergyPoints(0), _AttackDamage(0) {
+ClapTrap::ClapTrap() : _HitPoints(0), _EnergyPoints(0), _AttackDamage(0), _name("Default") {
 
 	std::cout << "ClapTrap default constructor called" << std::endl;
-	this->_name = "TEST";
 	return ;
 }
 
-ClapTrap::ClapTrap(std::string name) : _HitPoints(100), _EnergyPoints(50), _AttackDamage(20), _name(name) {
+ClapTrap::ClapTrap(std::string name) : _HitPoints(100), _EnergyPoints(50), _AttackDamage(0), _name(name) {
 
 	std::cout << "ClapTrap constructor(name) called : " << name << std::endl;
+	std::cout << this->_name << std::endl;
 	return ;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& obj) : _HitPoints(obj._HitPoints),
-_EnergyPoints(obj._EnergyPoints), _AttackDamage(obj._AttackDamage),
-_name(obj._name) {
+ClapTrap::ClapTrap(const ClapTrap& obj) {
 
 	std::cout << "ClapTrap copy constructor called" << std::endl;
+	*this = obj;
 	return ;
 }
 

@@ -2,20 +2,21 @@
 
 ScavTrap::ScavTrap() {
 
-	setHitPoints(0);
-	setEnergyPoints(0);
-	setAttackDamage(0);
 	std::cout << "ScavTrap default constructor called" << std::endl;
+	this->_HitPoints = 0;
+	this->_EnergyPoints = 0;
+	this->_AttackDamage = 0;
+	this->_name = "default";
 	return ;
 }
 
 ScavTrap::ScavTrap(std::string name) {
 
-	setName(name);
-	setHitPoints(100);
-	setEnergyPoints(50);
-	setAttackDamage(20);
 	std::cout << "ScavTrap constructor(name) called" << std::endl;
+	this->_HitPoints = 100;
+	this->_EnergyPoints = 50;
+	this->_AttackDamage = 25;
+	this->_name = name;
 	return ;
 }
 
@@ -25,21 +26,15 @@ ScavTrap::ScavTrap(const ScavTrap& obj) : ClapTrap(obj) {
 	return ;
 }
 
-void	ScavTrap::operator=(const ScavTrap& obj) {
+ScavTrap&	ScavTrap::operator=(const ScavTrap& obj) {
 
-	(void)obj;
-	return ;
+	this->_name = obj._name;
+	return *this;
 }
 
 ScavTrap::~ScavTrap() {
 
 	std::cout << "ScavTrap destructor called" << std::endl;
-	return ;
-}
-
-void	ScavTrap::setNameScavTrap(std::string name) {
-
-	setName(name);
 	return ;
 }
 

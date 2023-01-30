@@ -6,20 +6,21 @@
 
 FragTrap::FragTrap() {
 
-	setHitPoints(0);
-	setEnergyPoints(0);
-	setAttackDamage(0);
 	std::cout << "FragTrap default constructor called" << std::endl;
+	this->_HitPoints = 0;
+	this->_EnergyPoints = 0;
+	this->_AttackDamage = 0;
+	this->_name = "default";
 	return ;
 }
 
 FragTrap::FragTrap(std::string name) {
 
-	setName(name);
-	setHitPoints(100);
-	setEnergyPoints(100);
-	setAttackDamage(30);
 	std::cout << "FragTrap constructor(name) called" << std::endl;
+	this->_HitPoints = 100;
+	this->_EnergyPoints = 100;
+	this->_AttackDamage = 30;
+	this->_name = name;
 	return ;
 }
 
@@ -29,10 +30,10 @@ FragTrap::FragTrap(const FragTrap& obj) : ClapTrap(obj) {
 	return ;
 }
 
-void FragTrap::operator=(const FragTrap& obj) {
+FragTrap&	FragTrap::operator=(const FragTrap& obj) {
 
-	(void)obj;
-	return ;
+	this->_name = obj._name;
+	return *this;
 }
 
 FragTrap::~FragTrap() {
@@ -44,12 +45,6 @@ FragTrap::~FragTrap() {
 /***********************************************/
 /*                   FUNCTIONS                 */
 /***********************************************/
-
-void	FragTrap::setNameFragTrap(std::string name) {
-
-	setName(name);
-	return ;
-}
 
 void	FragTrap::highFiveGuys() {
 
