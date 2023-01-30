@@ -7,15 +7,13 @@
 ClapTrap::ClapTrap() : _HitPoints(0), _EnergyPoints(0), _AttackDamage(0) {
 
 	std::cout << "ClapTrap default constructor called" << std::endl;
+	this->_name = "TEST";
 	return ;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name) {
+ClapTrap::ClapTrap(std::string name) : _HitPoints(100), _EnergyPoints(50), _AttackDamage(20), _name(name) {
 
-	this->_HitPoints = 100;
-	this->_EnergyPoints = 50;
-	this->_AttackDamage = 20;
-	std::cout << "ClapTrap constructor(name) called" << std::endl;
+	std::cout << "ClapTrap constructor(name) called : " << name << std::endl;
 	return ;
 }
 
@@ -27,10 +25,10 @@ _name(obj._name) {
 	return ;
 }
 
-void	ClapTrap::operator=(const ClapTrap& obj) {
+ClapTrap&	ClapTrap::operator=(const ClapTrap& obj) {
 
-	(void)obj;
-	return ;
+	this->_name = obj.getName();
+	return (*this);
 }
 
 ClapTrap::~ClapTrap() {
@@ -79,7 +77,6 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 }
 
-
 /***********************************************/
 /*                   ACCESSORS                 */
 /***********************************************/
@@ -99,7 +96,7 @@ int	ClapTrap::getAttackDamage(void) {
 	return (this->_AttackDamage);
 }
 
-std::string	ClapTrap::getName(void) {
+const std::string&	ClapTrap::getName(void) const {
 
 	return (this->_name);
 }
