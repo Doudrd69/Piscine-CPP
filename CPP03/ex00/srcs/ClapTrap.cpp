@@ -4,38 +4,38 @@
 /*                 CONSTRUCTORS                */
 /***********************************************/
 
-ClapTrap::ClapTrap() : _HitPoints(0), _EnergyPoints(0), _AttackDamage(0) {
+ClapTrap::ClapTrap() :_name("default"), _HitPoints(0), _EnergyPoints(0), _AttackDamage(0) {
 
 	std::cout << "Default constructor called" << std::endl;
 	return ;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name) {
+ClapTrap::ClapTrap(std::string name) {
 
+	this->_name = name;
 	this->_HitPoints = 10;
 	this->_EnergyPoints = 10;
-	this->_AttackDamage = 1;
+	this->_AttackDamage = 0;
 	std::cout << "Constructor(name) called" << std::endl;
 	return ;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& obj) : _HitPoints(obj._HitPoints),
-_EnergyPoints(obj._EnergyPoints), _AttackDamage(obj._AttackDamage),
-_name(obj._name) {
+ClapTrap::ClapTrap(const ClapTrap& obj) {
 
 	std::cout << "Copy constructor called" << std::endl;
+	*this = obj;
 	return ;
 }
 
-void	ClapTrap::operator=(const ClapTrap& obj) {
+ClapTrap&	ClapTrap::operator=(const ClapTrap& obj) {
 
-	(void)obj;
-	return ;
+	this->_name = obj.getName();
+	return *this;
 }
 
 ClapTrap::~ClapTrap() {
 
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap destructor called" << std::endl;
 	return ;
 }
 
@@ -45,10 +45,7 @@ ClapTrap::~ClapTrap() {
 
 void	ClapTrap::attack(const std::string& target) {
 
-	//target perd <AttackDamage> Hitpoints
-	//checker si on peut attaquer (HP > 0 chez target)
-
-	if (this->_EnergyPoints > 0)
+	if (this->_EnergyPoints > 0 && this->_HitPoints > 0)
 	{
 		this->_EnergyPoints--;
 		std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_AttackDamage << " points of damage!" << std::endl;
@@ -81,7 +78,6 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 }
 
-
 /***********************************************/
 /*                   ACCESSORS                 */
 /***********************************************/
@@ -101,7 +97,7 @@ int	ClapTrap::getAttackDamage(void) {
 	return (this->_AttackDamage);
 }
 
-std::string	ClapTrap::getName(void) {
+const std::string&	ClapTrap::getName(void) const {
 
 	return (this->_name);
 }

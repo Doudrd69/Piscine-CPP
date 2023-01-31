@@ -13,7 +13,7 @@ OBJS = $(SRCS:.cpp=.o)
 %.o : %.cpp $(INCS)
 	$(CC) $(FLAGS) -std=c++98 -c $< -o $@
 
-NAME = FragTrap
+NAME = ScavTrap
 
 all : $(NAME)
 

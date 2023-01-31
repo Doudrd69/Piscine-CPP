@@ -1,28 +1,40 @@
 #include "../includes/ScavTrap.hpp"
 
-ScavTrap::ScavTrap() {
+/***********************************************/
+/*                 CONSTRUCTORS                */
+/***********************************************/
 
-	setHitPoints(0);
-	setEnergyPoints(0);
-	setAttackDamage(0);
+ScavTrap::ScavTrap() : ClapTrap() {
+
 	std::cout << "ScavTrap default constructor called" << std::endl;
+	this->_name = "default";
+	this->_HitPoints = 0;
+	this->_EnergyPoints = 0;
+	this->_AttackDamage = 0;
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name) {
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 
-	setName(name);
-	setHitPoints(100);
-	setEnergyPoints(50);
-	setAttackDamage(20);
 	std::cout << "ScavTrap constructor(name) called" << std::endl;
+	this->_name = name;
+	this->_HitPoints = 100;
+	this->_EnergyPoints = 50;
+	this->_AttackDamage = 20;
 	return ;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& obj) : ClapTrap(obj) {
 
 	std::cout << "ScavTrap copy constructor called" << std::endl;
+	*this = obj;
 	return ;
+}
+
+ScavTrap&	ScavTrap::operator=(const ScavTrap& obj) {
+
+	this->_name = obj.getName();
+	return *this;
 }
 
 ScavTrap::~ScavTrap() {
@@ -31,11 +43,9 @@ ScavTrap::~ScavTrap() {
 	return ;
 }
 
-void	ScavTrap::setNameScavTrap(std::string name) {
-
-	setName(name);
-	return ;
-}
+/***********************************************/
+/*                   FUNCTIONS                 */
+/***********************************************/
 
 void	ScavTrap::guardGate() {
 

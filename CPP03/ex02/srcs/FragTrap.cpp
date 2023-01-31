@@ -1,34 +1,40 @@
 #include "../includes/FragTrap.hpp"
 
-FragTrap::FragTrap() {
+/***********************************************/
+/*                 CONSTRUCTORS                */
+/***********************************************/
 
-	setHitPoints(0);
-	setEnergyPoints(0);
-	setAttackDamage(0);
+FragTrap::FragTrap() : ClapTrap() {
+
 	std::cout << "FragTrap default constructor called" << std::endl;
+	this->_name = "default";
+	this->_HitPoints = 0;
+	this->_EnergyPoints = 0;
+	this->_AttackDamage = 0;
 	return ;
 }
 
-FragTrap::FragTrap(std::string name) {
+FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 
-	setName(name);
-	setHitPoints(100);
-	setEnergyPoints(100);
-	setAttackDamage(30);
 	std::cout << "FragTrap constructor(name) called" << std::endl;
+	this->_name = name;
+	this->_HitPoints = 100;
+	this->_EnergyPoints = 100;
+	this->_AttackDamage = 30;
 	return ;
 }
 
 FragTrap::FragTrap(const FragTrap& obj) : ClapTrap(obj) {
 
 	std::cout << "FragTrap copy constructor called" << std::endl;
+	*this = obj;
 	return ;
 }
 
-void FragTrap::operator=(const FragTrap& obj) {
+FragTrap&	FragTrap::operator=(const FragTrap& obj) {
 
-	(void)obj;
-	return ;
+	this->_name = obj.getName();
+	return *this;
 }
 
 FragTrap::~FragTrap() {
@@ -37,14 +43,12 @@ FragTrap::~FragTrap() {
 	return ;
 }
 
-void	FragTrap::setNameFragTrap(std::string name) {
+/***********************************************/
+/*                   FUNCTIONS                 */
+/***********************************************/
 
-	setName(name);
-	return ;
-}
+void	FragTrap::highFiveGuys(void) {
 
-void	FragTrap::highFiveGuys() {
-
-	std::cout << "PLease guys, let's stop, i want a high five! Come on!" << std::endl;
+	std::cout << "FragTrap wants a high five! come on guys!" << std::endl;
 	return ;
 }

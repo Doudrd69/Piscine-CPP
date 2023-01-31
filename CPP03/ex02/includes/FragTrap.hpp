@@ -11,11 +11,10 @@ class FragTrap : public ClapTrap {
 		FragTrap();
 		FragTrap(std::string name);
 		FragTrap(const FragTrap& obj);
-		void	operator=(const FragTrap& obj);
+		FragTrap&	operator=(const FragTrap& obj);
 		~FragTrap();
 
-		void	setNameFragTrap(std::string name);
-		void	highFiveGuys();
+		void	highFiveGuys(void);
 };
 
 #endif

@@ -4,33 +4,33 @@
 /*                 CONSTRUCTORS                */
 /***********************************************/
 
-ClapTrap::ClapTrap() : _HitPoints(0), _EnergyPoints(0), _AttackDamage(0) {
+ClapTrap::ClapTrap() :_name("default"), _HitPoints(0), _EnergyPoints(0), _AttackDamage(0) {
 
-	std::cout << "ClapTrap default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 	return ;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name) {
+ClapTrap::ClapTrap(std::string name) {
 
-	this->_HitPoints = 100;
-	this->_EnergyPoints = 50;
-	this->_AttackDamage = 20;
-	std::cout << "ClapTrap constructor(name) called" << std::endl;
+	this->_name = name;
+	this->_HitPoints = 10;
+	this->_EnergyPoints = 10;
+	this->_AttackDamage = 0;
+	std::cout << "Constructor(name) called" << std::endl;
 	return ;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& obj) : _HitPoints(obj._HitPoints),
-_EnergyPoints(obj._EnergyPoints), _AttackDamage(obj._AttackDamage),
-_name(obj._name) {
+ClapTrap::ClapTrap(const ClapTrap& obj) {
 
-	std::cout << "ClapTrap copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
+	*this = obj;
 	return ;
 }
 
-void	ClapTrap::operator=(const ClapTrap& obj) {
+ClapTrap&	ClapTrap::operator=(const ClapTrap& obj) {
 
-	(void)obj;
-	return ;
+	this->_name = obj.getName();
+	return *this;
 }
 
 ClapTrap::~ClapTrap() {
@@ -60,8 +60,8 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 	this->_HitPoints = this->_HitPoints - amount;
 	if (this->_HitPoints <= 0)
 	{
-		this->_HitPoints = 0;
 		std::cout << "ClapTrap " << this->_name << " has no more hit points!" << std::endl;
+		this->_HitPoints = 0;
 		return ;
 	}
 	std::cout << "ClapTrap " << this->_name << " took " << amount << " damage!" << std::endl;
@@ -78,7 +78,6 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		return ;
 	}
 }
-
 
 /***********************************************/
 /*                   ACCESSORS                 */
@@ -99,15 +98,9 @@ int	ClapTrap::getAttackDamage(void) {
 	return (this->_AttackDamage);
 }
 
-std::string	ClapTrap::getName(void) {
+const std::string&	ClapTrap::getName(void) const {
 
 	return (this->_name);
-}
-
-void	ClapTrap::setName(std::string name) {
-
-	this->_name = name;
-	return ;
 }
 
 void	ClapTrap::setHitPoints(int value) {
@@ -127,4 +120,3 @@ void	ClapTrap::setAttackDamage(int value) {
 	this->_AttackDamage = value;
 	return ;
 }
-
