@@ -12,11 +12,12 @@ ClapTrap::ClapTrap() :_name("default"), _HitPoints(0), _EnergyPoints(0), _Attack
 
 ClapTrap::ClapTrap(std::string name) {
 
+	std::cout << "Constructor(name) called --> " << name << std::endl;
 	this->_name = name;
 	this->_HitPoints = 10;
 	this->_EnergyPoints = 10;
 	this->_AttackDamage = 0;
-	std::cout << "Constructor(name) called" << std::endl;
+	std::cout << "CLAPTRAP values : " << this->_name << this->_HitPoints << this->_EnergyPoints << this->_AttackDamage << std::endl;
 	return ;
 }
 

@@ -4,7 +4,7 @@
 /*                 CONSTRUCTORS                */
 /***********************************************/
 
-ScavTrap::ScavTrap() : ClapTrap() {
+ScavTrap::ScavTrap() {
 
 	std::cout << "ScavTrap default constructor called" << std::endl;
 	this->_name = "default";
@@ -14,13 +14,14 @@ ScavTrap::ScavTrap() : ClapTrap() {
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
+ScavTrap::ScavTrap(std::string name) {
 
 	std::cout << "ScavTrap constructor(name) called" << std::endl;
 	this->_name = name;
 	this->_HitPoints = 100;
 	this->_EnergyPoints = 50;
 	this->_AttackDamage = 20;
+	std::cout << "SCAVTRAP values : " << this->_name << this->_HitPoints << this->_EnergyPoints << this->_AttackDamage << std::endl;
 	return ;
 }
 

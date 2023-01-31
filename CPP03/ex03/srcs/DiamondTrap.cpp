@@ -17,10 +17,15 @@ DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap() {
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
 
 	std::cout << "DiamondTrap constructor(name) called" << std::endl;
+	std::cout << "CT values : " << ClapTrap::_name << ClapTrap::_HitPoints << ClapTrap::_EnergyPoints << ClapTrap::_AttackDamage << std::endl;
+	std::cout << "ST values : " << ScavTrap::_name << ScavTrap::_HitPoints << ScavTrap::_EnergyPoints << ScavTrap::_AttackDamage << std::endl;
+	std::cout << "FT values : " << FragTrap::_name << FragTrap::_HitPoints << FragTrap::_EnergyPoints << FragTrap::_AttackDamage << std::endl;
+
 	this->_name = name;
 	this->_HitPoints = FragTrap::getHitPoints();
 	this->_EnergyPoints = ScavTrap::getEnergyPoints();
 	this->_AttackDamage = FragTrap::getAttackDamage();
+	std::cout << "DIAMONDTRAP values : " << this->_name << this->_HitPoints << this->_EnergyPoints << this->_AttackDamage << std::endl;
 	return ;
 }
 
@@ -50,5 +55,5 @@ DiamondTrap::~DiamondTrap() {
 void	DiamondTrap::whoAmI(void) {
 
 	std::cout << "My real name : " << this->_name << std::endl;
-	std::cout << "My Clap name : " << ClapTrap::_name << std::endl;
+	std::cout << "My Clap name : " << ClapTrap::_name << "\n" << std::endl;
 }

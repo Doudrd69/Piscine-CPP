@@ -4,7 +4,7 @@
 /*                 CONSTRUCTORS                */
 /***********************************************/
 
-FragTrap::FragTrap() : ClapTrap() {
+FragTrap::FragTrap() {
 
 	std::cout << "FragTrap default constructor called" << std::endl;
 	this->_name = "default";
@@ -14,13 +14,14 @@ FragTrap::FragTrap() : ClapTrap() {
 	return ;
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name) {
+FragTrap::FragTrap(std::string name) {
 
 	std::cout << "FragTrap constructor(name) called" << std::endl;
 	this->_name = name;
 	this->_HitPoints = 100;
 	this->_EnergyPoints = 100;
 	this->_AttackDamage = 30;
+	std::cout << "FRAGTRAP values : " << this->_name << this->_HitPoints << this->_EnergyPoints << this->_AttackDamage << std::endl;
 	return ;
 }
 

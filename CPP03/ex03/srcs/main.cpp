@@ -5,11 +5,11 @@
 
 int	main(void) {
 
-	DiamondTrap object("Master Windu");
+	DiamondTrap	object("Master Windu");
 
-	std::cout << object.getName() << " has " << object.getHitPoints() << " HP";
+	std::cout << "\n" << object.getName() << " has " << object.getHitPoints() << " HP";
 	std::cout << " / " << object.getEnergyPoints() << " EP";
-	std::cout << " / " << object.getAttackDamage() << " AD" << std::endl;
+	std::cout << " / " << object.getAttackDamage() << " AD\n" << std::endl;
 
 	object.whoAmI();
 
