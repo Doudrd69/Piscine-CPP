@@ -14,12 +14,12 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		DiamondTrap&	operator=(const DiamondTrap& obj);
 		~DiamondTrap();
 
-		using		ScavTrap::attack;
-		void		whoAmI(void);
+		using	ScavTrap::attack;
+		void	whoAmI(void);
 
-		private :
+	private :
 
-			std::string	_name;
+		std::string	_name;
 };
 
 #endif

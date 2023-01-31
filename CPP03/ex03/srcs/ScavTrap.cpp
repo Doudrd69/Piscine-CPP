@@ -4,30 +4,30 @@
 /*                 CONSTRUCTORS                */
 /***********************************************/
 
-ScavTrap::ScavTrap() {
+ScavTrap::ScavTrap() : ClapTrap() {
 
 	std::cout << "ScavTrap default constructor called" << std::endl;
+	this->_name = "default";
 	this->_HitPoints = 0;
 	this->_EnergyPoints = 0;
 	this->_AttackDamage = 0;
-	this->_name = "default";
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name) {
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 
 	std::cout << "ScavTrap constructor(name) called" << std::endl;
-	this->_HitPoints = 150;
-	this->_EnergyPoints = 50;
-	this->_AttackDamage = 25;
 	this->_name = name;
-	std::cout << "ScavTrap EP --> " << this->_EnergyPoints << std::endl;
+	this->_HitPoints = 100;
+	this->_EnergyPoints = 50;
+	this->_AttackDamage = 20;
 	return ;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& obj) : ClapTrap(obj) {
 
 	std::cout << "ScavTrap copy constructor called" << std::endl;
+	*this = obj;
 	return ;
 }
 
@@ -49,6 +49,6 @@ ScavTrap::~ScavTrap() {
 
 void	ScavTrap::guardGate() {
 
-	std::cout << "ScavTrap " << this->_name << " entered Gate Keeper mode" << std::endl;
+	std::cout << "ScavTrap entered Gate Keeper mode" << std::endl;
 	return ;
 }

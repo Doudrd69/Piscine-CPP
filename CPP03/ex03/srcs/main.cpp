@@ -5,13 +5,11 @@
 
 int	main(void) {
 
-	DiamondTrap	object("Anakin");
+	DiamondTrap object("Master Windu");
 
 	std::cout << object.getName() << " has " << object.getHitPoints() << " HP";
 	std::cout << " / " << object.getEnergyPoints() << " EP";
 	std::cout << " / " << object.getAttackDamage() << " AD" << std::endl;
-
-	object.attack("Obi-Wan");
 
 	object.whoAmI();
 
