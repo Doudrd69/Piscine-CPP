@@ -20,13 +20,17 @@ class Form {
         };
         
         Form();
-        Form(int grade);
+        Form(const std::string name, int grade);
         Form(const Form& obj);
         Form& operator=(const Form& obj);
         ~Form();
 
         void    beSigned(Bureaucrat* bc);
-        void    signForm();
+        void    signForm(Bureaucrat *bc);
+
+        const std::string&	getName();
+        bool				getIsSigned();
+		int					getGrade();
 
         private :
 
@@ -34,6 +38,6 @@ class Form {
             bool                _isSigned;
             int                 _gradeToSign;
             int                 _gradeToExec;
-}
+};
 
 #endif

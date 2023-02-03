@@ -6,12 +6,12 @@ Form::Form() : _name("default"), _isSigned(false), _gradeToSign(150), _gradeToEx
     return ;
 }
 
-Form::Form(std::string name, int grade) {
+Form::Form(const std::string name, int grade) {
 
     if (grade > 0 && grade < 151) {
         this->_name = name;
         this->_gradeToSign = grade;
-        this->gradeToExec = grade;
+        this->_gradeToExec = grade;
         this->_isSigned = false;
     }
     else if (grade < 1)
@@ -36,8 +36,8 @@ Form&   Form::operator=(const Form& obj) {
     this->_name = getName();
     this->_isSigned = getIsSigned();
     this->_gradeToSign = getGrade();
-    this->_gradeToExec = getName();
-    return (this);
+    this->_gradeToExec = getGrade();
+    return (*this);
 }
 
 std::ostream&	operator<<(std::ostream& out, const Form& obj) {
@@ -64,6 +64,33 @@ const char *Form::GradeTooHighException::what() const throw()
 
 void    Form::beSigned(Bureaucrat* bc) {
 
-    (void)bc;
+    if (bc->getGrade() <= this->_gradeToSign)
+        this->_isSigned = true;
+    else
+        throw Form::GradeTooLowException();
     return ;
+}
+
+void    Form::signForm(Bureaucrat* bc) {
+
+    if (this->_isSigned == true)
+        std::cout << bc->getName() << " signed " << this->getName();
+    else
+        std::cout << bc->getName() << " couldn't sign " << this->getName() << " because grade is too low";
+        return ;
+}
+
+const std::string&  Form::getName(){
+
+    return (this->_name);
+}
+
+bool    Form::getIsSigned() {
+
+    return (this->_isSigned);
+}
+
+int Form::getGrade() {
+
+    return (this->_gradeToSign);
 }
