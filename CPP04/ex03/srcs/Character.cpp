@@ -39,16 +39,14 @@ void	Character::equip(AMateria* m) {
 		this->_inventory_index++;
 		return ;
 	}
-
-	std::cout << this->_name << " can't take the materia and let it on the ground" << std::endl;
-	delete m;
-
+	std::cout << this->_name << "'s inventory is full and let the Materia on the ground" << std::endl;
+    delete m;
 	return ;
 }
 
 void	Character::unequip(int idx) {
 
-	std::cout << "Unequip Materia " << this->_inventory[idx]->getType() << std::endl;
+	std::cout << "-- Unequip Materia " << this->_inventory[idx]->getType() << " --" << std::endl;
 	delete (this->_inventory[idx]);
 	return ;
 }

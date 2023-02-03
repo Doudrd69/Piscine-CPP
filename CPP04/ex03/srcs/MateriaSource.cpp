@@ -23,10 +23,12 @@ void    MateriaSource::learnMateria(AMateria* m) {
     for (int i = 0; i < 4; i++) {
 
         if (this->_inventory[i] == 0) {
+            std::cout << "-- Materia successfully learned --" << std::endl;
             this->_inventory[i] = m->clone();
-            break;
+            return ;
         }
     }
+    std::cout << "-- Materia inventory is full --" << std::endl;
     return ;
 }
 
@@ -34,9 +36,11 @@ AMateria*   MateriaSource::createMateria(const std::string& type) {
 
     for (int i = 0; i < 4; i++) {
 
-        if (this->_inventory[i]->getType() == type)
+        if (this->_inventory[i]->getType() == type) {
+             std::cout << "-- Materia successfully created --" << std::endl;
             return (this->_inventory[i]);
+        }
     }
-    std::cout << "Unknown Materia type" << std::endl;
+    std::cout << "-- Unknown Materia type --" << std::endl;
     return (0);
 }
