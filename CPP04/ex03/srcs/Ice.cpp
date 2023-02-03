@@ -7,7 +7,7 @@ Ice::Ice() {
 	return ;
 }
 
-Ice::Ice(const Ice& obj) {
+Ice::Ice(const Ice& obj) : AMateria(obj) {
 
 	*this = obj;
 	return ;
@@ -32,6 +32,6 @@ Ice*	Ice::clone() const {
 
 void	Ice::use(ICharacter& target) {
 
-	std::cout << "* shoots an ice bolt at " << target.getName() << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 	return ;
 }

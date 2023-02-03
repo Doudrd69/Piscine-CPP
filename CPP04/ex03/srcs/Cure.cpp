@@ -7,7 +7,7 @@ Cure::Cure() {
 	return ;
 }
 
-Cure::Cure(const Cure& obj) {
+Cure::Cure(const Cure& obj) : AMateria(obj) {
 
 	*this = obj;
 	return ;

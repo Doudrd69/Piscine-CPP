@@ -5,7 +5,9 @@ SRCS =	srcs/main.cpp			\
 		srcs/AMateria.cpp		\
 		srcs/Ice.cpp			\
 		srcs/Cure.cpp			\
-		srcs/ICharacter.cpp
+		srcs/Character.cpp		\
+		srcs/MateriaSource.cpp
+
 
 INCS =	includes/AMateria.hpp
 
