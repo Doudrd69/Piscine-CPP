@@ -1,5 +1,9 @@
 #include "../includes/Bureaucrat.hpp"
 
+/***********************************************/
+/*                 CONSTRUCTORS                */
+/***********************************************/
+
 Bureaucrat::Bureaucrat() : _name("default"), _grade(0) {
 
     std::cout << "Bureaucrat default constructor called" << std::endl;
@@ -50,6 +54,10 @@ Bureaucrat::~Bureaucrat() {
 	return ;
 }
 
+/***********************************************/
+/*                 FUNCTIONS                   */
+/***********************************************/
+
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
     return "Error code : 1";
@@ -79,6 +87,10 @@ void	Bureaucrat::downGrade() {
 		std::cout << this->_name << "was promoted to grade " << this->_grade << std::endl;
 	return ;
 }
+
+/***********************************************/
+/*                 ACCESSORS                   */
+/***********************************************/
 
 const std::string&	Bureaucrat::getName(void) const {
 

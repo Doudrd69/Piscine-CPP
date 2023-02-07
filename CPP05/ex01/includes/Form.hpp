@@ -28,13 +28,17 @@ class Form {
         void    beSigned(Bureaucrat* bc);
         void    signForm(Bureaucrat *bc);
 
-        const std::string&	getName();
-        bool				getIsSigned();
-		int					getGrade();
+        std::string     	getName() const;
+        bool				getIsSigned() const;
+		int					getGrade() const;
+
+
+        void                upGrade();
+        void                downGrade();
 
         private :
 
-            const std::string   _name;
+            std::string         _name;
             bool                _isSigned;
             int                 _gradeToSign;
             int                 _gradeToExec;

@@ -33,10 +33,10 @@ Form::Form(const Form& obj) {
 
 Form&   Form::operator=(const Form& obj) {
 
-    this->_name = getName();
-    this->_isSigned = getIsSigned();
-    this->_gradeToSign = getGrade();
-    this->_gradeToExec = getGrade();
+    this->_name = obj.getName();
+    this->_isSigned = obj.getIsSigned();
+    this->_gradeToSign = obj.getGrade();
+    this->_gradeToExec = obj.getGrade();
     return (*this);
 }
 
@@ -45,6 +45,7 @@ std::ostream&	operator<<(std::ostream& out, const Form& obj) {
 	out << obj.getName() << ", form grade " << obj.getGrade();
 	return (out); 
 }
+
 
 Form::~Form() {
 
@@ -74,23 +75,45 @@ void    Form::beSigned(Bureaucrat* bc) {
 void    Form::signForm(Bureaucrat* bc) {
 
     if (this->_isSigned == true)
-        std::cout << bc->getName() << " signed " << this->getName();
+        std::cout << bc->getName() << " signed " << this->getName() << std::endl;
     else
-        std::cout << bc->getName() << " couldn't sign " << this->getName() << " because grade is too low";
-        return ;
+        std::cout << bc->getName() << " couldn't sign " << this->getName() << " because grade is too low" << std::endl;
+    return ;
 }
 
-const std::string&  Form::getName(){
+void	Form::upGrade() {
+
+	--this->_gradeToSign;
+    --this->_gradeToExec;
+	if (this->_gradeToSign < 1)
+		throw Form::GradeTooHighException();		
+	else
+		std::cout << this->_name << " was promoted to grade " << this->_gradeToSign << std::endl;
+	return ;
+}
+
+void	Form::downGrade() {
+
+	++this->_gradeToSign;
+    ++this->_gradeToExec;
+	if (this->_gradeToSign > 150)
+		throw Form::GradeTooLowException();		
+	else
+		std::cout << this->_name << "was promoted to grade " << this->_gradeToSign << std::endl;
+	return ;
+}
+
+std::string  Form::getName() const {
 
     return (this->_name);
 }
 
-bool    Form::getIsSigned() {
+bool    Form::getIsSigned() const {
 
     return (this->_isSigned);
 }
 
-int Form::getGrade() {
+int Form::getGrade() const {
 
     return (this->_gradeToSign);
 }
