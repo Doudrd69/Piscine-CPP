@@ -68,6 +68,15 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
     return "Error code : 2";
 }
 
+void    Bureaucrat::executeForm(const AForm& form) {
+
+    if (this->_grade <= form.getGradeToExec())
+        std::cout << this->_name << " execute " << form.getName() << std::endl;
+    else
+        throw Bureaucrat::GradeTooLowException();
+    return ;
+}
+
 void	Bureaucrat::upGrade() {
 
 	--this->_grade;

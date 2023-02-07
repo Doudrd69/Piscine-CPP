@@ -41,7 +41,6 @@ std::ostream&	operator<<(std::ostream& out, const AForm* obj) {
     return (out); 
 }
 
-
 AForm::~AForm() {
 
     std::cout << "Form destructor called" << std::endl;
@@ -62,9 +61,14 @@ const char *AForm::GradeTooHighException::what() const throw()
     return "Error code : 2";
 }
 
-const char *AForm::RobotomyFailed::what() const throw()
+const char *AForm::FormIsNotSigned::what() const throw()
 {
     return "Error code : 3";
+}
+
+const char *AForm::RobotomyFailed::what() const throw()
+{
+    return "Error code : 4";
 }
 
 void    AForm::beSigned(Bureaucrat* bc) {

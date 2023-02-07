@@ -2,6 +2,7 @@
 #include "../includes/AForm.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
 #include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
 
 
 std::ostream&   operator<<(std::ostream& out, const Bureaucrat& obj);
@@ -13,18 +14,25 @@ int main () {
 
     try
     {
-        Bureaucrat	test("Macron", 5);
-        AForm*		form1 = new PresidentialPardonForm("issou");
+        Bureaucrat	bc1("Palpatine", 42);
+        Bureaucrat  bc2("Yoda", 149);
+        AForm*		form1 = new PresidentialPardonForm("Obi-Wan");
         AForm*      form2 = new RobotomyRequestForm("Anakin");
-        std::cout << test << std::endl;
+        AForm*      form3 = new ShrubberyCreationForm("Naboo");
+        std::cout << bc1 << std::endl;
+        std::cout << bc2 << std::endl;
 		std::cout << form1 << std::endl;
 		std::cout << form2 << std::endl;
-       	test.upGrade();
+        std::cout << form3 << std::endl;
+       	//bc1.upGrade();
         //test.downGrade();	
-        form1->beSigned(&test);
-		form1->execute(test);
-		form2->beSigned(&test);
-		form2->execute(test);
+        // form1->beSigned(&bc1);
+		// form1->execute(bc1);
+		// form2->beSigned(&bc2);
+		// form2->execute(bc2);
+        bc2.executeForm(*form3);
+    	form3->beSigned(&bc1);
+		form3->execute(bc1);
     }
     catch(Bureaucrat::GradeTooLowException &e)
     {
@@ -48,24 +56,13 @@ int main () {
 	}
 	catch(AForm::RobotomyFailed &e)
 	{
-		std::cout << "Robotomy failed !" << e.what() << std::endl;
+		std::cout << "Robotomy failed ! " << e.what() << std::endl;
 		return 3;
+	}
+	catch(AForm::FormIsNotSigned &e)
+	{
+		std::cout << "/!\\ The form is not signed and can't be executed /!\\ : " << e.what() << std::endl;
+		return 4;
 	}
     return 0;
 }
-
-//class Form --> AForm (abstract)
-    //attributs restent prives
-    //AForm(name, target) ?
-
-//les classes suivantes prennent en parametre
-//dans leur constructeur la <target> du formulaire
-
-//class concrete SCF
-    //gradeS = 145 / gradeE = 137
-    //creer un fichier avec <target>_shrubbery
-
-//class concrete PPF
-    //gradeS = 25 / gradeE = 5
-    //informe que <target> a ete pardonee
-    //PPF(name, target) ?

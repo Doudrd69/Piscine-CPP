@@ -5,6 +5,9 @@
 #include <string>
 #include <exception>
 
+#include "AForm.hpp"
+
+class AForm;
 class Bureaucrat {
 
     public :
@@ -27,9 +30,10 @@ class Bureaucrat {
         Bureaucrat& operator=(const Bureaucrat& obj);
         ~Bureaucrat();
 
-        const std::string&   getName(void) const;
-        int                 getGrade(void) const;
+        const std::string&	getName(void) const;
+        int                	getGrade(void) const;
 
+        void				executeForm(AForm const & form);
         void                upGrade();
         void                downGrade();
 

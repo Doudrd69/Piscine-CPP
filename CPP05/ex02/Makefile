@@ -5,7 +5,8 @@ SRCS =	srcs/main.cpp						\
 		srcs/Bureaucrat.cpp					\
 		srcs/AForm.cpp						\
 		srcs/PresidentialPardonForm.cpp		\
-		srcs/RobotomyRequestForm.cpp
+		srcs/RobotomyRequestForm.cpp		\
+		srcs/ShrubberyCreationForm.cpp
 
 INCS =	includes/Bureaucrat.hpp
 

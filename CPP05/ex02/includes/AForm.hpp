@@ -3,6 +3,8 @@
 
 #include "Bureaucrat.hpp"
 
+
+class Bureaucrat;
 class AForm {
 
     public :
@@ -19,6 +21,12 @@ class AForm {
                 virtual const char *what() const throw();
         };
 
+        class FormIsNotSigned : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+
         class RobotomyFailed : public std::exception
         {
             public:
@@ -29,7 +37,7 @@ class AForm {
         AForm(const std::string target);
         AForm(const AForm& obj);
         AForm& operator=(const AForm& obj);
-        ~AForm();
+        virtual ~AForm();
 
         virtual void execute(Bureaucrat const & executor) const = 0;
 

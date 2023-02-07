@@ -44,7 +44,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 RobotomyRequestForm::~RobotomyRequestForm() {
 
-    std::cout << "PPF destructor called" << std::endl;
+    std::cout << "RRF destructor called" << std::endl;
     return ;
 }
 
@@ -61,9 +61,13 @@ void    RobotomyRequestForm::execute(const Bureaucrat& exec) const {
         srand(time(0));
         int success = rand() % 100 + 1;
         if (success <= 50)
-            std::cout << "==> Target has been successfully robotized." << std::endl;
+            std::cout << "==> Target " << this->getTarget() << " has been successfully robotized." << std::endl;
+        else
+            throw AForm::RobotomyFailed();
     }
+    else if (exec.getGrade() > this->getGradeToExec())
+        throw AForm::GradeTooLowException();
     else
-        throw AForm::RobotomyFailed();
+        throw AForm::FormIsNotSigned();
     return ;
 }
