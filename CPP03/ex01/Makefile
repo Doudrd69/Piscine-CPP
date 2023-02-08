@@ -5,7 +5,8 @@ SRCS =	srcs/main.cpp		\
 		srcs/ClapTrap.cpp	\
 		srcs/ScavTrap.cpp
 
-INCS =	includes/ClapTrap.hpp
+INCS =	includes/ClapTrap.hpp 	\
+		includes/ScavTrap.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -17,7 +18,7 @@ NAME = ScavTrap
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(FLAGS) -I $(INCS) -std=c++98 -o $(NAME) $(OBJS)
+	$(CC) $(FLAGS) $(INCS) -std=c++98 -o $(NAME) $(OBJS)
 
 clean :
 	rm -f $(OBJS)

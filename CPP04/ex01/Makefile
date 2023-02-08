@@ -9,7 +9,12 @@ SRCS =	srcs/main.cpp			\
 		srcs/WrongAnimal.cpp	\
 		srcs/Brain.cpp
 
-INCS =	includes/Animal.hpp
+INCS =	includes/Animal.hpp			\
+		includes/Dog.hpp			\
+		includes/Cat.hpp			\
+		includes/WrongCat.hpp		\
+		includes/WrongAnimal.hpp	\
+		includes/Brain.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -21,7 +26,7 @@ NAME = Animal
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(FLAGS) -I $(INCS) -std=c++98 -o $(NAME) $(OBJS)
+	$(CC) $(FLAGS) $(INCS) -std=c++98 -o $(NAME) $(OBJS)
 
 clean :
 	rm -f $(OBJS)

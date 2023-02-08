@@ -7,7 +7,7 @@ Dog::Dog() {
 	return ;
 }
 
-Dog::Dog(const Dog& obj) {
+Dog::Dog(const Dog& obj) : Animal(obj) {
 
 	*this = obj;
 	return ;

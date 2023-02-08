@@ -4,24 +4,23 @@
 /*                 CONSTRUCTORS                */
 /***********************************************/
 
-FragTrap::FragTrap() {
+FragTrap::FragTrap() : ClapTrap() {
 
 	std::cout << "FragTrap default constructor called" << std::endl;
-	this->_name = "default";
-	this->_HitPoints = 0;
-	this->_EnergyPoints = 0;
-	this->_AttackDamage = 0;
+   this->_name = "default";
+   this->_HitPoints = 0;
+   this->_EnergyPoints = 0;
+   this->_AttackDamage = 0;
 	return ;
 }
 
-FragTrap::FragTrap(std::string name) {
+FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 
 	std::cout << "FragTrap constructor(name) called" << std::endl;
 	this->_name = name;
-	this->_HitPoints = 100;
-	this->_EnergyPoints = 100;
-	this->_AttackDamage = 30;
-	std::cout << "FRAGTRAP values : " << this->_name << this->_HitPoints << this->_EnergyPoints << this->_AttackDamage << std::endl;
+   	this->_HitPoints = 100;
+   	this->_EnergyPoints = 100;
+   	this->_AttackDamage = 30;
 	return ;
 }
 
@@ -34,7 +33,10 @@ FragTrap::FragTrap(const FragTrap& obj) : ClapTrap(obj) {
 
 FragTrap&	FragTrap::operator=(const FragTrap& obj) {
 
-	this->_name = obj.getName();
+	setName(obj.getName());
+    setHitPoints(obj.getHitPoints());
+    setEnergyPoints(obj.getEnergyPoints());
+    setAttackDamage(obj.getAttackDamage());
 	return *this;
 }
 

@@ -9,7 +9,13 @@ SRCS =	srcs/main.cpp			\
 		srcs/MateriaSource.cpp
 
 
-INCS =	includes/AMateria.hpp
+INCS =	includes/AMateria.hpp		\
+		includes/Ice.hpp			\
+		includes/Cure.hpp			\
+		includes/Character.hpp		\
+		includes/ICharacter.hpp		\
+		includes/IMateriaSource.hpp	\
+		includes/MateriaSource.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -21,7 +27,7 @@ NAME = Materia
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(FLAGS) -I $(INCS) -std=c++98 -o $(NAME) $(OBJS)
+	$(CC) $(FLAGS) $(INCS) -std=c++98 -o $(NAME) $(OBJS)
 
 clean :
 	rm -f $(OBJS)

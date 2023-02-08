@@ -7,7 +7,7 @@ WrongCat::WrongCat() {
 	return ;
 }
 
-WrongCat::WrongCat(const WrongCat& obj) {
+WrongCat::WrongCat(const WrongCat& obj) : WrongAnimal(obj) {
 
 	*this = obj;
 	return ;

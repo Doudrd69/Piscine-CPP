@@ -10,7 +10,7 @@ Cat::Cat() {
 	return ;
 }
 
-Cat::Cat(const Cat& obj) {
+Cat::Cat(const Cat& obj) : Animal(obj) {
 
 	*this = obj;
 	return ;

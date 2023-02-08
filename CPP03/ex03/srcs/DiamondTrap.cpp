@@ -8,28 +8,26 @@ DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap() {
 
 	std::cout << "DiamondTrap default constructor called" << std::endl;
 	this->_name = "default";
-	this->_HitPoints = 0;
-	this->_EnergyPoints = 0;
-	this->_AttackDamage = 0;
+	this->_HitPoints = 100;
+	this->_EnergyPoints = 50;
+	this->_AttackDamage = 20;
 	return ;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name + "_scav"), FragTrap(name + "_frag") {
 
 	std::cout << "DiamondTrap constructor(name) called" << std::endl;
-	std::cout << "CT values : " << ClapTrap::_name << ClapTrap::_HitPoints << ClapTrap::_EnergyPoints << ClapTrap::_AttackDamage << std::endl;
-	std::cout << "ST values : " << ScavTrap::_name << ScavTrap::_HitPoints << ScavTrap::_EnergyPoints << ScavTrap::_AttackDamage << std::endl;
-	std::cout << "FT values : " << FragTrap::_name << FragTrap::_HitPoints << FragTrap::_EnergyPoints << FragTrap::_AttackDamage << std::endl;
-
 	this->_name = name;
-	this->_HitPoints = FragTrap::getHitPoints();
-	this->_EnergyPoints = ScavTrap::getEnergyPoints();
-	this->_AttackDamage = FragTrap::getAttackDamage();
-	std::cout << "DIAMONDTRAP values : " << this->_name << this->_HitPoints << this->_EnergyPoints << this->_AttackDamage << std::endl;
+   	this->_HitPoints = FragTrap::getHitPoints();;
+   	this->_EnergyPoints = ScavTrap::getEnergyPoints();
+   	this->_AttackDamage = FragTrap::getAttackDamage();
+    // setHitPoints(FragTrap::getHitPoints());
+    // setEnergyPoints(ScavTrap::getEnergyPoints());
+    // setAttackDamage(FragTrap::getAttackDamage());
 	return ;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& obj) : ClapTrap(obj) {
+DiamondTrap::DiamondTrap(const DiamondTrap& obj) : ClapTrap(obj), ScavTrap(obj), FragTrap(obj) {
 
 	std::cout << "DiamondTrap copy constructor called" << std::endl;
 	*this = obj;
@@ -39,6 +37,9 @@ DiamondTrap::DiamondTrap(const DiamondTrap& obj) : ClapTrap(obj) {
 DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& obj) {
 
 	this->_name = obj.getName();
+    setHitPoints(obj.getHitPoints());
+    setEnergyPoints(obj.getEnergyPoints());
+    setAttackDamage(obj.getAttackDamage());
 	return *this;
 }
 
