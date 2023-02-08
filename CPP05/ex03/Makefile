@@ -9,7 +9,12 @@ SRCS =	srcs/main.cpp						\
 		srcs/ShrubberyCreationForm.cpp		\
 		srcs/Intern.cpp
 
-INCS =	includes/Bureaucrat.hpp
+INCS =	includes/Bureaucrat.hpp					\
+		includes/AForm.hpp						\
+		includes/PresidentialPardonForm.hpp		\
+		includes/RobotomyRequestForm.hpp		\
+		includes/ShrubberyCreationForm.hpp		\
+		includes/Intern.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -21,7 +26,7 @@ NAME = Bureaucrat
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(FLAGS) -I $(INCS) -std=c++98 -o $(NAME) $(OBJS)
+	$(CC) $(FLAGS) $(INCS) -std=c++98 -o $(NAME) $(OBJS)
 
 clean :
 	rm -f $(OBJS)
