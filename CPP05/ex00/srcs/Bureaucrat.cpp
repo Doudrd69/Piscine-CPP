@@ -6,7 +6,7 @@ Bureaucrat::Bureaucrat() : _name("default"), _grade(0) {
     return ;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) {
+Bureaucrat::Bureaucrat(std::string* name, int grade) {
 
     std::cout << "Bureaucrat constructor(string, int) called" << std::endl;
 	this->_grade = grade;

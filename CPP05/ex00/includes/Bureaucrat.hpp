@@ -22,7 +22,7 @@ class Bureaucrat {
         };
 
         Bureaucrat();
-        Bureaucrat(std::string name, int grade);
+        Bureaucrat(std::string* name, int grade);
         Bureaucrat(const Bureaucrat& obj);
         Bureaucrat& operator=(const Bureaucrat& obj);
         ~Bureaucrat();
@@ -35,8 +35,8 @@ class Bureaucrat {
 
         private :
 
-            std::string _name;
-            int         _grade;
-};
+            const std::string   _name;
+            int                 _grade;
+}; 
 
 #endif
