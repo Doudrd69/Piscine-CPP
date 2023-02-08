@@ -68,12 +68,22 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
     return "Error code : 2";
 }
 
-void    Bureaucrat::executeForm(const AForm& form) {
+void    Bureaucrat::signForm( AForm& form) {
 
-    if (this->_grade <= form.getGradeToExec())
-        std::cout << this->_name << " execute " << form.getName() << std::endl;
+    if (this->_grade <= form.getGradeToSign())
+        form.beSigned(this);
     else
         throw Bureaucrat::GradeTooLowException();
+}
+
+void    Bureaucrat::executeForm(const AForm& form) {
+
+    if ((this->_grade <= form.getGradeToExec()) && (form.getIsSigned() == true))
+        form.execute(*this);
+    else if (this->_grade > form.getGradeToExec())
+        throw Bureaucrat::GradeTooLowException();
+    else
+        throw AForm::FormIsNotSigned();
     return ;
 }
 

@@ -1,5 +1,9 @@
 #include "../includes/Intern.hpp"
 
+/***********************************************/
+/*                 CONSTRUCTORS                */
+/***********************************************/
+
 Intern::Intern() {
 
     std::cout << "Intern created" << std::endl;
@@ -23,6 +27,10 @@ Intern::~Intern() {
     std::cout << "Intern destructor called" << std::endl;
     return ;
 }
+
+/***********************************************/
+/*                 FUNCTIONS                   */
+/***********************************************/
 
 AForm*  Intern::makeForm(std::string name, std::string target) const {
 
@@ -48,6 +56,6 @@ AForm*  Intern::makeForm(std::string name, std::string target) const {
             break;
     }
     if (formIndex == -1)
-        std::cout << "Invalid form request" << std::endl;
+        throw AForm::InvalidFormRequest();
     return 0;
 }

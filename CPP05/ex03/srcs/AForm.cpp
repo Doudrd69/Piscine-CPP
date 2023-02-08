@@ -71,21 +71,22 @@ const char *AForm::RobotomyFailed::what() const throw()
     return "Error code : 4";
 }
 
-void    AForm::beSigned(Bureaucrat* bc) {
-
-    if (bc->getGrade() <= this->_gradeToSign)
-        this->_isSigned = true;
-    else
-        throw AForm::GradeTooLowException();
-    return ;
+const char *AForm::InvalidFormRequest::what() const throw()
+{
+    return "Error code : 5";
 }
 
-void    AForm::signForm(Bureaucrat* bc) {
+void    AForm::beSigned(Bureaucrat* bc) {
 
-    if (this->_isSigned == true)
-        std::cout << bc->getName() << " signed " << this->getName() << std::endl;
+    if ((bc->getGrade() <= this->_gradeToSign) && (this->_isSigned == false))
+    {
+        std::cout << bc->getName() << " signed " << this->_name << std::endl;
+        this->_isSigned = true;
+    }
+    else if (bc->getGrade() > this->_gradeToSign)
+        throw AForm::GradeTooLowException();
     else
-        std::cout << bc->getName() << " couldn't sign " << this->getName() << " because grade is too low" << std::endl;
+        std::cout << "Form is already signed !" << std::endl;
     return ;
 }
 

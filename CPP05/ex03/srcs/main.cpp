@@ -22,9 +22,11 @@ int main () {
 		rrf = randomIntern.makeForm("robotomy request", "Anakin");
 		std::cout << rrf << std::endl;
 
-		bc1.executeForm(*rrf);
 		rrf->beSigned(&bc1);
 		rrf->execute(bc1);
+
+		// bc1.signForm(*rrf);
+		// bc1.executeForm(*rrf);
     }
     catch(Bureaucrat::GradeTooLowException &e)
     {
@@ -55,6 +57,12 @@ int main () {
 	{
 		std::cout << "/!\\ The form is not signed and can't be executed /!\\ : " << e.what() << std::endl;
 		return 4;
+	}
+	catch (AForm::InvalidFormRequest &e)
+	{
+		std::cout << "Invalid form request : " << e.what() << std::endl;
+		std::cout << "Valid forms are : shrubberry creation / robotomy request / presidential pardon" << std::endl;
+		return 5;
 	}
     return 0;
 }

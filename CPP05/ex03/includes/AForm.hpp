@@ -27,6 +27,12 @@ class AForm {
                 virtual const char *what() const throw();
         };
 
+        class InvalidFormRequest : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+
         class RobotomyFailed : public std::exception
         {
             public:
@@ -39,10 +45,11 @@ class AForm {
         AForm& operator=(const AForm& obj);
         virtual ~AForm();
 
-        virtual void execute(Bureaucrat const & executor) const = 0;
+        virtual void        execute(Bureaucrat const & executor) const = 0;
+        virtual void        beSigned(Bureaucrat* bc);
 
-        void    beSigned(Bureaucrat* bc);
-        void    signForm(Bureaucrat *bc);
+        void                upGrade();
+        void                downGrade();
 
         std::string     	getName() const;
         std::string         getTarget() const;
@@ -56,8 +63,6 @@ class AForm {
         void                setGradeToSign(int value);
         void                setGradeToExec(int value);
 
-        void                upGrade();
-        void                downGrade();
 
         private :
 
