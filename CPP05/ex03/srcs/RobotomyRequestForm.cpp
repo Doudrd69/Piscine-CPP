@@ -66,7 +66,7 @@ void    RobotomyRequestForm::execute(const Bureaucrat& exec) const {
             throw AForm::RobotomyFailed();
     }
     else if (exec.getGrade() > this->getGradeToExec())
-        throw AForm::GradeTooLowException();
+        throw AForm::GradeTooLowToExecException();
     else
         throw AForm::FormIsNotSigned();
     return ;

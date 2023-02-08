@@ -21,6 +21,18 @@ class AForm {
                 virtual const char *what() const throw();
         };
 
+        class GradeTooLowToSignException : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+        
+        class GradeTooLowToExecException : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+
         class FormIsNotSigned : public std::exception
         {
             public:

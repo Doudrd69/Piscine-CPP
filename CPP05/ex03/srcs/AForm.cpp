@@ -61,19 +61,29 @@ const char *AForm::GradeTooHighException::what() const throw()
     return "Error code : 2";
 }
 
-const char *AForm::FormIsNotSigned::what() const throw()
+const char *AForm::GradeTooLowToSignException::what() const throw()
 {
     return "Error code : 3";
 }
 
-const char *AForm::RobotomyFailed::what() const throw()
+const char *AForm::GradeTooLowToExecException::what() const throw()
 {
     return "Error code : 4";
 }
 
-const char *AForm::InvalidFormRequest::what() const throw()
+const char *AForm::FormIsNotSigned::what() const throw()
 {
     return "Error code : 5";
+}
+
+const char *AForm::RobotomyFailed::what() const throw()
+{
+    return "Error code : 6";
+}
+
+const char *AForm::InvalidFormRequest::what() const throw()
+{
+    return "Error code : 7";
 }
 
 void    AForm::beSigned(Bureaucrat* bc) {
@@ -84,7 +94,7 @@ void    AForm::beSigned(Bureaucrat* bc) {
         this->_isSigned = true;
     }
     else if (bc->getGrade() > this->_gradeToSign)
-        throw AForm::GradeTooLowException();
+        throw AForm::GradeTooLowToSignException();
     else
         std::cout << "Form is already signed !" << std::endl;
     return ;

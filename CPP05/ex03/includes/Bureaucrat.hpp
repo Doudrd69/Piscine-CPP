@@ -24,6 +24,18 @@ class Bureaucrat {
                 virtual const char *what() const throw();
         };
 
+        class GradeTooLowToSignException : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+        
+        class GradeTooLowToExecException : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+
         Bureaucrat();
         Bureaucrat(std::string name, int grade);
         Bureaucrat(const Bureaucrat& obj);

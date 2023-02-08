@@ -21,6 +21,18 @@ class AForm {
                 virtual const char *what() const throw();
         };
 
+        class GradeTooLowToSignException : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+
+        class GradeTooLowToExecException : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+
         class FormIsNotSigned : public std::exception
         {
             public:
@@ -39,10 +51,8 @@ class AForm {
         AForm& operator=(const AForm& obj);
         virtual ~AForm();
 
-        virtual void execute(Bureaucrat const & executor) const = 0;
-
-        void    beSigned(Bureaucrat* bc);
-        void    signForm(Bureaucrat *bc);
+        virtual void        execute(Bureaucrat const & executor) const = 0;
+        void                beSigned(Bureaucrat* bc);
 
         std::string     	getName() const;
         std::string         getTarget() const;

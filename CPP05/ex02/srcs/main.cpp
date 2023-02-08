@@ -24,15 +24,12 @@ int main () {
 		std::cout << form1 << std::endl;
 		std::cout << form2 << std::endl;
         std::cout << form3 << std::endl;
-       	//bc1.upGrade();
-        //test.downGrade();	
-        // form1->beSigned(&bc1);
-		// form1->execute(bc1);
-		// form2->beSigned(&bc2);
-		// form2->execute(bc2);
-        bc2.executeForm(*form3);
-    	form3->beSigned(&bc1);
-		form3->execute(bc1);
+
+		bc1.signForm(*form3);
+		bc1.executeForm(*form3);
+
+		// form3->beSigned(&bc1);
+		// form3->execute(bc1);
     }
     catch(Bureaucrat::GradeTooLowException &e)
     {
@@ -44,25 +41,45 @@ int main () {
         std::cout << "Grade is too high: " << e.what() << std::endl;
         return 2;
     }
+	catch (Bureaucrat::GradeTooLowToSignException &e)
+	{
+		std::cout << "Bureaucrat grade is too low to sign : " << e.what() << std::endl;
+		return 3;
+	}
+	catch (Bureaucrat::GradeTooLowToExecException &e)
+	{
+		std::cout << "Bureaucrat grade is too low to execute : " << e.what() << std::endl;
+		return 4;
+	}
 	catch(AForm::GradeTooLowException &e)
 	{
-		std::cout << "Bureaucrat grade is too low to sign/execute: " << e.what() << std::endl;
+		std::cout << "Form grade is too low : " << e.what() << std::endl;
 		return 1;
 	}
 	catch(AForm::GradeTooHighException &e)
 	{
-		std::cout << "Bureaucrat grade is too high to sign/execute: " << e.what() << std::endl;
+		std::cout << "Form grade is too high : " << e.what() << std::endl;
 		return 2;
 	}
-	catch(AForm::RobotomyFailed &e)
+	catch (AForm::GradeTooLowToSignException &e)
 	{
-		std::cout << "Robotomy failed ! " << e.what() << std::endl;
+		std::cout << "Form is too high for the bureaucrat to be signed : " << e.what() << std::endl;
 		return 3;
+	}
+	catch (AForm::GradeTooLowToExecException &e)
+	{
+		std::cout << "Form is too high for the bureaucart to be executed : " << e.what() << std::endl;
+		return (4);
 	}
 	catch(AForm::FormIsNotSigned &e)
 	{
 		std::cout << "/!\\ The form is not signed and can't be executed /!\\ : " << e.what() << std::endl;
-		return 4;
+		return 5;
+	}
+	catch(AForm::RobotomyFailed &e)
+	{
+		std::cout << "Robotomy failed ! " << e.what() << std::endl;
+		return 6;
 	}
     return 0;
 }

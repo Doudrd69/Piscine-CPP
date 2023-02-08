@@ -38,31 +38,51 @@ int main () {
         std::cout << "Grade is too high: " << e.what() << std::endl;
         return 2;
     }
+	catch (Bureaucrat::GradeTooLowToSignException &e)
+	{
+		std::cout << "Bureaucrat grade is too low to sign : " << e.what() << std::endl;
+		return 3;
+	}
+	catch (Bureaucrat::GradeTooLowToExecException &e)
+	{
+		std::cout << "Bureaucrat grade is too low to execute : " << e.what() << std::endl;
+		return 4;
+	}
 	catch(AForm::GradeTooLowException &e)
 	{
-		std::cout << "Bureaucrat grade is too low to sign/execute: " << e.what() << std::endl;
+		std::cout << "Bureaucrat grade is too low: " << e.what() << std::endl;
 		return 1;
 	}
 	catch(AForm::GradeTooHighException &e)
 	{
-		std::cout << "Bureaucrat grade is too high to sign/execute: " << e.what() << std::endl;
+		std::cout << "Bureaucrat grade is too high : " << e.what() << std::endl;
 		return 2;
 	}
-	catch(AForm::RobotomyFailed &e)
+	catch (AForm::GradeTooLowToSignException &e)
 	{
-		std::cout << "Robotomy failed ! " << e.what() << std::endl;
+		std::cout << "Form grade is to high for bureaucrat to be signed : " << e.what() << std::endl;
 		return 3;
+	}
+	catch (AForm::GradeTooLowToExecException &e)
+	{
+		std::cout << "Form grade is to high for bureaucrat to be executed : " << e.what() << std::endl;
+		return 4;
 	}
 	catch(AForm::FormIsNotSigned &e)
 	{
 		std::cout << "/!\\ The form is not signed and can't be executed /!\\ : " << e.what() << std::endl;
-		return 4;
+		return 5;
+	}
+	catch(AForm::RobotomyFailed &e)
+	{
+		std::cout << "Robotomy failed ! " << e.what() << std::endl;
+		return 6;
 	}
 	catch (AForm::InvalidFormRequest &e)
 	{
 		std::cout << "Invalid form request : " << e.what() << std::endl;
 		std::cout << "Valid forms are : shrubberry creation / robotomy request / presidential pardon" << std::endl;
-		return 5;
+		return 7;
 	}
     return 0;
 }

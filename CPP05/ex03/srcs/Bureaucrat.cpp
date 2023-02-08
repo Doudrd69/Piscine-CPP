@@ -68,12 +68,22 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
     return "Error code : 2";
 }
 
+const char *Bureaucrat::GradeTooLowToSignException::what() const throw()
+{
+    return "Error code : 3";
+}
+
+const char *Bureaucrat::GradeTooLowToExecException::what() const throw()
+{
+    return "Error code : 4";
+}
+
 void    Bureaucrat::signForm( AForm& form) {
 
     if (this->_grade <= form.getGradeToSign())
         form.beSigned(this);
     else
-        throw Bureaucrat::GradeTooLowException();
+        throw Bureaucrat::GradeTooLowToSignException();
 }
 
 void    Bureaucrat::executeForm(const AForm& form) {
@@ -81,7 +91,7 @@ void    Bureaucrat::executeForm(const AForm& form) {
     if ((this->_grade <= form.getGradeToExec()) && (form.getIsSigned() == true))
         form.execute(*this);
     else if (this->_grade > form.getGradeToExec())
-        throw Bureaucrat::GradeTooLowException();
+        throw Bureaucrat::GradeTooLowToExecException();
     else
         throw AForm::FormIsNotSigned();
     return ;
