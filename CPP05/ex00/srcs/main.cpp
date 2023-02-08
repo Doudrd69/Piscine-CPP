@@ -9,7 +9,6 @@ int main () {
     {
         Bureaucrat test("Macron", 150);
         std::cout << test << std::endl;
-        // test.upGrade();
         test.downGrade();
         std::cout << test << std::endl;
     }
