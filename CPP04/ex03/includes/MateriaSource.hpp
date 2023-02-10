@@ -13,11 +13,12 @@ class MateriaSource : public IMateriaSource {
         MateriaSource& operator=(const MateriaSource& obj);
         virtual ~MateriaSource() {}
 
-        virtual void learnMateria(AMateria* m);
-        virtual AMateria* createMateria(std::string const & type);
+        virtual void		learnMateria(AMateria* m);
+        virtual AMateria*	createMateria(std::string const & type);
 
     private :
 
+		int			_index;
         AMateria*   _inventory[4];
 };
 

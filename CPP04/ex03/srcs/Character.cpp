@@ -15,14 +15,36 @@ Character::Character(std::string name) {
 
 Character::Character(const Character& obj) {
 
+	for (int i = 0; i < 4; i++) {
+		if (this->_inventory[i] != NULL)
+			delete this->_inventory[i];
+	}
 	*this = obj;
 	return ;
 }
 
 Character&	Character::operator=(const Character& obj) {
 
+	for (int i = 0; i < 4; i++) {
+		if (this->_inventory[i] != NULL)
+			delete this->_inventory[i];
+	}
+
 	this->_name = obj.getName();
+	this->_inventory_index = obj._inventory_index;
+
+	for (int i = 0; i < obj._inventory_index; i++) {
+		if (obj._inventory[i] != NULL)
+			this->_inventory[i] = obj._inventory[i];
+	}
+
 	return (*this);
+}
+
+Character::~Character() {
+
+	std::cout << "Character destructor called" << std::endl;
+	return ;
 }
 
 const std::string&	Character::getName() const {
@@ -46,13 +68,24 @@ void	Character::equip(AMateria* m) {
 
 void	Character::unequip(int idx) {
 
-	std::cout << "-- Unequip Materia " << this->_inventory[idx]->getType() << " --" << std::endl;
-	delete (this->_inventory[idx]);
+	if (this->_inventory[idx] != NULL)
+		std::cout << "-- Unequip Materia " << this->_inventory[idx]->getType() << " --" << std::endl;
+	else
+		std::cout << "-- Materia does not exist --" << std::endl; 
 	return ;
 }
 
 void	Character::use(int idx, ICharacter& target) {
 
 	this->_inventory[idx]->use(target);
+	return ;
+}
+
+void	Character::deleteTab() {
+
+	for (int i = 0; i < 4; i++) {
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+	}
 	return ;
 }
