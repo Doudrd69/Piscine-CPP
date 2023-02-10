@@ -25,6 +25,8 @@ int main(int argc, char **argv) {
 		std::string	tmp = argv[1];
 		int	tmp_length = tmp.length();
 
+
+		/******************** INTEGER ********************/
 		int	i_input = std::strtol(argv[1], &end, 10);
 		if (*end == 0) {
 
@@ -39,6 +41,7 @@ int main(int argc, char **argv) {
 			return 0;
 		}
 
+		/******************** FLOAT ********************/
 		float	f_input = std::strtof(argv[1], &end);
 		int length = end - argv[1];
 		if ((length == tmp_length - 1) && *end == 'f' && *(end + 1) == '\0') {
@@ -56,6 +59,7 @@ int main(int argc, char **argv) {
 			return 0;
 		}
 
+		/******************** DOUBLE ********************/
 		double	d_input = std::strtod(argv[1], &end);
 		if (*end == 0) {
 
@@ -72,6 +76,7 @@ int main(int argc, char **argv) {
 			return 0;
 		}
 
+		/******************** CHAR ********************/
 		if (argv[1][0] && !argv[1][1]) {
 
 			std::cout << "char_input ! " << argv[1] << std::endl;
