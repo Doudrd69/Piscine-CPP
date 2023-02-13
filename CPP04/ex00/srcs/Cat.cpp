@@ -9,7 +9,7 @@ Cat::Cat() {
 
 Cat::Cat(const Cat& obj) : Animal(obj) {
 
-	*this = obj;
+	setType(obj.getType());
 	return ;
 }
 

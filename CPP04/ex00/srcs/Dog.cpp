@@ -9,7 +9,7 @@ Dog::Dog() {
 
 Dog::Dog(const Dog& obj) : Animal(obj) {
 
-	*this = obj;
+	setType(obj.getType());
 	return ;
 }
 

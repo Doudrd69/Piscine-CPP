@@ -8,13 +8,17 @@ Brain::Brain() {
 
 Brain::Brain(const Brain& obj) {
 
-	*this = obj;
+	for (int i = 0; i < 100; i++) {
+		this->ideas[i] = obj.ideas[i];
+	}
 	return ;
 }
 
 Brain&	Brain::operator=(const Brain& obj) {
 
-	(void)obj;
+	for (int i = 0; i < 100; i++) {
+		this->ideas[i] = obj.ideas[i];
+	};
 	return (*this);
 }
 

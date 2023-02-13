@@ -6,6 +6,11 @@
 
 int	main() {
 
+	// Dog basic;
+	// {
+	// 	Dog tmp = basic;
+	// }
+
 	Animal*	array[4];
 
 	const Animal* dog = new Dog();

@@ -19,9 +19,11 @@ int main() {
     Data*       deseri = deserialize(seri);
 
     if (deseri == &data)
-        std::cout << "Addresses are the same : " << deseri << " / " << &data << std::endl;
+    {
+        std::cout << "deseri : " << deseri << std::endl;
+        std::cout << "seri   : " << &data << std::endl;
+    }
     else
         std::cout << "Addresses are different" << std::endl;
-
     return 0;
 }

@@ -12,10 +12,9 @@ Animal::Animal(const Animal& obj) {
 	return ;
 }
 
-const Animal&	Animal::operator=(const Animal& obj) const {
+Animal&	Animal::operator=(const Animal& obj) {
 
-	(void)obj;
-	//this->_type = obj._type;
+	this->_type = obj.getType();
 	return (*this);
 }
 

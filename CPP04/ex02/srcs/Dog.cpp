@@ -12,13 +12,21 @@ Dog::Dog() {
 
 Dog::Dog(const Dog& obj) : Animal(obj) {
 
-	*this = obj;
+	std::cout << "Copy Construct" << std::endl;
+	setType(obj.getType());
+	this->brain = new Brain(*obj.brain);
 	return ;
 }
 
 Dog&	Dog::operator=(const Dog& obj) {
 
-	setType(obj.getType());
+	if (this != &obj) {
+
+		setType(obj.getType());
+		delete this->brain;
+		this->brain = new Brain();
+	}
+	std::cout << "= overload" << std::endl;
 	return *this;
 }
 
@@ -29,11 +37,11 @@ Dog::~Dog() {
 	return ;
 }
 
-Dog*	Dog::f() {
+// Dog*	Dog::f() {
 
-	new Dog();
-	return (this);
-}
+// 	new Dog();
+// 	return (this);
+// }
 
 void	Dog::makeSound(void) const {
 

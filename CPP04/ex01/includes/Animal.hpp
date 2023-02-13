@@ -9,7 +9,7 @@ class Animal {
 
 		Animal();
 		Animal(const Animal& obj);
-		const Animal& operator=(const Animal& obj) const;
+		Animal& operator=(const Animal& obj);
 		virtual ~Animal();
 
 		virtual void	makeSound(void) const;

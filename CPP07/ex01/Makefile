@@ -3,17 +3,14 @@ FLAGS = -Wall -Wextra -Werror
 
 SRCS =	main.cpp
 
-INCS =	Base.hpp	\
-		A.hpp		\
-		B.hpp		\
-		C.hpp
+INCS =	Iter.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 %.o : %.cpp
 	$(CC) $(FLAGS) -std=c++98 -c $< -o $@
 
-NAME = Base
+NAME = Iter
 
 all : $(NAME)
 

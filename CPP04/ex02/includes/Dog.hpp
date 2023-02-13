@@ -13,7 +13,7 @@ class Dog : public Animal {
 		Dog& operator=(const Dog& obj);
 		virtual ~Dog();
 
-		virtual Dog*	f();
+		//virtual Dog*	f();
 		virtual void	makeSound(void) const;
 
 	private :
