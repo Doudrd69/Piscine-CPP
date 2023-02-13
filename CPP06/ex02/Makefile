@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror
 
 SRCS =	main.cpp
 
-INCS =	Data.hpp
+# INCS =	includes/Convert.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
