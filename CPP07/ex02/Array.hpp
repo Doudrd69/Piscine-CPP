@@ -46,19 +46,22 @@ class Array {
 
         Array& operator=(const Array& obj) {
 
-            this->_size = obj._size;
-            delete[] this->_array;
-            this->_array = new T[this->_size];
-            for (unsigned int i = 0; i < this->_size; i++)
+            if (this != &obj)
             {
-                if (i >= this->_size)
-                    throw Array::InvalidIndex();
-                this->_array[i] = obj._array[i];
+                this->_size = obj._size;
+                delete[] this->_array;
+                this->_array = new T[this->_size];
+                for (unsigned int i = 0; i < this->_size; i++)
+                {
+                    if (i >= this->_size)
+                        throw Array::InvalidIndex();
+                    this->_array[i] = obj._array[i];
+                }
             }
             return *this;
         }
 
-        int& operator[](unsigned int index) {
+        T& operator[](unsigned int index) {
 
             if (index >= this->_size)
                 throw Array::InvalidIndex();
@@ -75,6 +78,11 @@ class Array {
         T   getValue(int index) const {
 
             return (this->_array[index]);
+        }
+
+        T*  getArray() const {
+
+            return (this->_array);
         }
 
     private :
