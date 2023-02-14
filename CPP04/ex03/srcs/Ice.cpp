@@ -9,7 +9,7 @@ Ice::Ice() {
 
 Ice::Ice(const Ice& obj) : AMateria(obj) {
 
-	*this = obj;
+	this->_type = obj.getType();
 	return ;
 }
 

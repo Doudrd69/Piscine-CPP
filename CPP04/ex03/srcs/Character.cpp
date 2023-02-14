@@ -19,7 +19,14 @@ Character::Character(const Character& obj) {
 		if (this->_inventory[i] != NULL)
 			delete this->_inventory[i];
 	}
-	*this = obj;
+
+	this->_name = obj._name;
+	this->_inventory_index = obj._inventory_index;
+	
+	for (int i = 0; i < obj._inventory_index; i++) {
+		if (obj._inventory[i] != NULL)
+			this->_inventory[i] = obj._inventory[i];
+	}
 	return ;
 }
 
@@ -29,7 +36,6 @@ Character&	Character::operator=(const Character& obj) {
 		if (this->_inventory[i] != NULL)
 			delete this->_inventory[i];
 	}
-
 	this->_name = obj.getName();
 	this->_inventory_index = obj._inventory_index;
 

@@ -16,6 +16,7 @@ AMateria::AMateria(std::string const & type) {
 AMateria::AMateria(const AMateria& obj) {
 
 	std::cout << "AMateria copy constructor called" << std::endl;
+	this->_type = obj.getType();
 	*this = obj;
 	return ;
 }

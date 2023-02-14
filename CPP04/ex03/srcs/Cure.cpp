@@ -9,7 +9,7 @@ Cure::Cure() {
 
 Cure::Cure(const Cure& obj) : AMateria(obj) {
 
-	*this = obj;
+	this->_type = obj.getType();
 	return ;
 }
 

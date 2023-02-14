@@ -8,13 +8,32 @@ MateriaSource::MateriaSource() {
 
 MateriaSource::MateriaSource(const MateriaSource& obj) {
 
-    *this = obj;
+    for (int i = 0; i < 4; i++) {
+		if (this->_inventory[i] != NULL)
+			delete this->_inventory[i];
+    }
+    this->_index = obj._index;
+    
+    for (int i = 0; i < 4; i++) {
+		if (obj._inventory[i] != NULL)
+			this->_inventory[i] = obj._inventory[i];
+	}
     return ;
 }
 
 MateriaSource&  MateriaSource::operator=(const MateriaSource& obj) {
 
-    (void)obj;
+    for (int i = 0; i < 4; i++) {
+		if (this->_inventory[i] != NULL)
+			delete this->_inventory[i];
+    }
+
+    this->_index = obj._index;
+    
+    for (int i = 0; i < 4; i++) {
+		if (obj._inventory[i] != NULL)
+			this->_inventory[i] = obj._inventory[i];
+	}
     return (*this);
 }
 
@@ -36,7 +55,6 @@ void    MateriaSource::learnMateria(AMateria* m) {
 AMateria*   MateriaSource::createMateria(const std::string& type) {
 
     int j = this->_index + 1;
-    std::cout << "INDEX ==> " << j << std::endl;
     if (j >= 2)
     {
         for (int k = j; k < 4; k++) {
@@ -63,7 +81,3 @@ AMateria*   MateriaSource::createMateria(const std::string& type) {
     std::cout << "-- Unknown Materia type --" << std::endl;
     return (0);
 }
-//ici je retourne pas le bon pointeur, donc apres je free un truc vide
-//[0] -> ice
-//[1] -> cure   
-//[2] -> cure

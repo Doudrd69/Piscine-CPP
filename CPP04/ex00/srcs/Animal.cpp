@@ -8,6 +8,7 @@ Animal::Animal() {
 
 Animal::Animal(const Animal& obj) {
 
+	this->_type = obj._type;
 	*this = obj;
 	return ;
 }
