@@ -1,16 +1,16 @@
 CC = c++
 FLAGS = -Wall -Wextra -Werror
 
-SRCS =	main.cpp	\
+SRCS =	main.cpp
 
-INCS =	Span.hpp
+INCS =	MutantStack.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 %.o : %.cpp $(INCS)
 	$(CC) $(FLAGS) -std=c++98 -c $< -o $@
 
-NAME = span
+NAME = mutant
 
 all : $(NAME)
 
