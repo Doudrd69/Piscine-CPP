@@ -6,14 +6,11 @@ Bureaucrat::Bureaucrat() : _name("default"), _grade(0) {
     return ;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) {
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 
     std::cout << "Bureaucrat constructor(string, int) called" << std::endl;
 	this->_grade = grade;
-    if (grade > 0 && grade < 151) {
-        this->_name = name;
-    }
-    else if (grade < 1)
+    if (grade < 1)
     {
         throw Bureaucrat::GradeTooHighException();
     }
@@ -21,19 +18,18 @@ Bureaucrat::Bureaucrat(std::string name, int grade) {
     {
         throw Bureaucrat::GradeTooLowException();
     }
-	return ;
+    else
+	    return ;
 }
 	
-
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) {
 
-    *this = obj;
+    this->_grade = obj.getGrade();
     return ;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj) {
 
-    this->_name = obj.getName();
     this->_grade = obj.getGrade();
     return (*this);
 }
@@ -58,6 +54,14 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
     return "Error code : 2";
+}
+
+void    Bureaucrat::signForm(Form* form) {
+
+    if ((form->getIsSigned() == false) && (this->_grade <= form->getGrade()))
+        form->beSigned(this);
+    else
+        std::cout << this->_name << " couldn't sign " << form->getName() << " because of grade too low" << std::endl;
 }
 
 void	Bureaucrat::upGrade() {

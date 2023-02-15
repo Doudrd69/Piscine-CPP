@@ -6,10 +6,9 @@ Form::Form() : _name("default"), _isSigned(false), _gradeToSign(150), _gradeToEx
     return ;
 }
 
-Form::Form(const std::string name, int grade) {
+Form::Form(const std::string name, int grade) : _name(name) {
 
     if (grade > 0 && grade < 151) {
-        this->_name = name;
         this->_gradeToSign = grade;
         this->_gradeToExec = grade;
         this->_isSigned = false;
@@ -27,13 +26,14 @@ Form::Form(const std::string name, int grade) {
 
 Form::Form(const Form& obj) {
 
-    *this = obj;
+    this->_isSigned = obj.getIsSigned();
+    this->_gradeToSign = obj.getGrade();
+    this->_gradeToExec = obj.getGrade();
     return ;
 }
 
 Form&   Form::operator=(const Form& obj) {
 
-    this->_name = obj.getName();
     this->_isSigned = obj.getIsSigned();
     this->_gradeToSign = obj.getGrade();
     this->_gradeToExec = obj.getGrade();
@@ -66,18 +66,12 @@ const char *Form::GradeTooHighException::what() const throw()
 void    Form::beSigned(Bureaucrat* bc) {
 
     if (bc->getGrade() <= this->_gradeToSign)
+    {
         this->_isSigned = true;
+        std::cout << bc->getName() << " signed " << this->_name << std::endl;
+    }
     else
         throw Form::GradeTooLowException();
-    return ;
-}
-
-void    Form::signForm(Bureaucrat* bc) {
-
-    if (this->_isSigned == true)
-        std::cout << bc->getName() << " signed " << this->getName() << std::endl;
-    else
-        std::cout << bc->getName() << " couldn't sign " << this->getName() << " because grade is too low" << std::endl;
     return ;
 }
 

@@ -12,14 +12,14 @@ int main () {
     try
     {
         Bureaucrat	test("Macron", 42);
-        Form        form_1("Retraite", 42);
+        Form        form_1("Retraite", 12);
         std::cout << test << std::endl;
 		std::cout << form_1 << std::endl;
        	test.upGrade();
         //test.downGrade();	
 		form_1.upGrade();
-		form_1.beSigned(&test);
-		form_1.signForm(&test);
+		// form_1.beSigned(&test);
+		test.signForm(&form_1);
         std::cout << test << std::endl;
     }
     catch(Bureaucrat::GradeTooLowException &e)

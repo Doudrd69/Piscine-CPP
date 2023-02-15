@@ -24,8 +24,8 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 	
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) {
-
-    *this = obj;
+    
+	this->_grade = obj.getGrade();
     return ;
 }
 
@@ -77,10 +77,10 @@ void	Bureaucrat::downGrade() {
 	return ; 
 }
 
-const std::string&	Bureaucrat::getName(void) const {
+	const std::string&	Bureaucrat::getName(void) const {
 
-	return (this->_name);
-}
+		return (this->_name);
+	}
 
 int	Bureaucrat::getGrade(void) const {
 

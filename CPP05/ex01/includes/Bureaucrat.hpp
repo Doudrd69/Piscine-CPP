@@ -4,7 +4,9 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include "Form.hpp"
 
+class Form;
 class Bureaucrat {
 
     public :
@@ -27,7 +29,9 @@ class Bureaucrat {
         Bureaucrat& operator=(const Bureaucrat& obj);
         ~Bureaucrat();
 
-        const std::string&   getName(void) const;
+        void				signForm(Form* form);
+
+        const std::string&	getName(void) const;
         int                 getGrade(void) const;
 
         void                upGrade();
@@ -35,8 +39,8 @@ class Bureaucrat {
 
         private :
 
-            std::string _name;
-            int         _grade;
+            const std::string   _name;
+            int                 _grade;
 };
 
 #endif

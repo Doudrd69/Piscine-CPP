@@ -3,6 +3,7 @@
 
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
 class Form {
 
     public :
@@ -26,7 +27,6 @@ class Form {
         ~Form();
 
         void    beSigned(Bureaucrat* bc);
-        void    signForm(Bureaucrat *bc);
 
         std::string     	getName() const;
         bool				getIsSigned() const;
@@ -38,7 +38,7 @@ class Form {
 
         private :
 
-            std::string         _name;
+            const std::string   _name;
             bool                _isSigned;
             int                 _gradeToSign;
             int                 _gradeToExec;
