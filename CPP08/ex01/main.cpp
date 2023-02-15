@@ -2,17 +2,28 @@
 
 int main() {
 
-    Span sp = Span(6);
+    try
+    {
+        unsigned int n = 5;
 
-    sp.addNumber(6);
-    sp.addNumber(3);
-    sp.addNumber(17);
-    sp.addNumber(8);
-    sp.addNumber(11);
-    sp.addNumber(3);
+        Span sp = Span(n);
 
-    std::cout << sp.shortestSpan() << std::endl;
-    std::cout << sp.longestSpan() << std::endl;
+        sp.addNumber(6);
+        sp.addNumber(3);
+        sp.addNumber(17);
+        sp.addNumber(9);
+        sp.addNumber(11);
 
-    return 0;
+        //sp.addLotofNumbers(n);
+
+        std::cout << sp.shortestSpan() << std::endl;
+        std::cout << sp.longestSpan() << std::endl;
+
+        return 0;
+    }
+    catch(Span::SameValueDetected &e)
+    {
+        std::cerr << "Error : the container can't have two same values: " << e.what() << '\n';
+    }
+    
 }

@@ -6,9 +6,8 @@ Span::Span(unsigned int N) {
     this->_cont.reserve(N);
 }
 
-Span::Span(const Span& obj) {
+Span::Span(const Span& obj) : _cont(obj._cont) {
     
-    this->_cont = obj._cont;
     return ;
 }
 
@@ -18,35 +17,63 @@ Span& Span::operator=(const Span& obj) {
     return *this;
 }
 
+const char *Span::SameValueDetected::what() const throw()
+{
+    return "Error code: 1";
+}
+
+
 void    Span::addNumber(int value) {
 
-    if (std::find(this->_cont.begin(), this->_cont.end(), value) != 0)
-        this->_cont.push_back(value);
+    std::vector<unsigned int>::const_iterator ptr;
+    ptr = std::find(this->_cont.begin(), this->_cont.end(), value);
+    if (ptr != this->_cont.end())
+        throw Span::SameValueDetected() ;
+    this->_cont.push_back(value);
     return ;
+}
+
+void    Span::addLotofNumbers(unsigned int number) {
+
+    int rvalue;
+    srand(time(0));
+
+    for (unsigned int i = 0; i < number; i++)
+    {
+        rvalue = rand();
+        this->_cont.push_back(rvalue);
+    }
 }
 
 int Span::shortestSpan() {
 
-    int min_span = __INT_MAX__;
     int tmp;
+    int check = 0;
 
     std::vector<unsigned int>::const_iterator start = this->_cont.begin();
     std::vector<unsigned int>::const_iterator end = this->_cont.end();
 
     for (std::vector<unsigned int>::const_iterator it1 = start; it1 != end; it1++)
     {
-        if (tmp < min_span)
-            min_span = tmp;
         for (std::vector<unsigned int>::const_iterator it2 = start + 1; it2 != end; it2++)
-            tmp = abs(*it2 - *it1);
+        {
+            if (check == 0)
+            {
+                tmp = abs(*it2 - *it1);
+                check = 1;
+            }
+            if (abs(*it2 - *it1) < tmp && it2 != it1 && check == 1)
+                tmp = abs(*it2 - *it1);
+        }
     }
-    return min_span;
+    return tmp;
 }
 
 int Span::longestSpan() {
 
     int max = *std::max_element(this->_cont.begin(), this->_cont.end());
     int min = *std::min_element(this->_cont.begin(), this->_cont.end());
+    //std::cout << max << "  -  " << min << std::endl;
     int max_range = max - min;
     return max_range;
 }
