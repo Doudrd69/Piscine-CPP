@@ -4,41 +4,27 @@
 /*                 CONSTRUCTORS                */
 /***********************************************/
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm() {
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137) {
 
     std::cout << "SCF default constructor called" << std::endl;
-
-    setName("default");
-    setIsSigned(false);
-    setGradeToSign(145);
-    setGradeToExec(137);
     return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(target) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
 
     std::cout << "SCF constructor(string) called" << std::endl;
-    setName("Shrubbery Creation Form");
-    setTarget(target);
-    setIsSigned(false);
-    setGradeToSign(145);
-    setGradeToExec(137);
     return ;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) : AForm(obj) {
 
-    *this = obj;
+    std::cout << "SCF copy constructor" << std::endl;
     return ;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj) {
 
-    setName(obj.getName());
-    setTarget(obj.getTarget());
-    setIsSigned(obj.getIsSigned());
-    setGradeToSign(obj.getGradeToSign());
-    setGradeToExec(obj.getGradeToExec());
+    this->_target = obj._target;
     return (*this);
 }
 
@@ -86,7 +72,7 @@ outfile << "                                 .         ;              \n"
 void    ShrubberyCreationForm::execute(const Bureaucrat& exec) const {
 
     std::ofstream   outfile;
-    std::string     tmp = this->getTarget();
+    std::string     tmp = this->_target;
     if ((exec.getGrade() <= this->getGradeToExec()) && this->getIsSigned() == true)
     {
         tmp.append("_shrubbery");
@@ -101,7 +87,7 @@ void    ShrubberyCreationForm::execute(const Bureaucrat& exec) const {
         outfile.close();
     }
     else if (exec.getGrade() > this->getGradeToExec())
-        throw AForm::GradeTooLowToExecException();
+        throw AForm::GradeTooLowException();
     else
         throw AForm::FormIsNotSigned();
     return ;

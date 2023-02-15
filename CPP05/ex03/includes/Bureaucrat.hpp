@@ -29,7 +29,7 @@ class Bureaucrat {
             public:
                 virtual const char *what() const throw();
         };
-        
+
         class GradeTooLowToExecException : public std::exception
         {
             public:
@@ -52,8 +52,8 @@ class Bureaucrat {
 
         private :
 
-            std::string _name;
-            int         _grade;
+            const std::string   _name;
+            int                 _grade;
 };
 
 #endif

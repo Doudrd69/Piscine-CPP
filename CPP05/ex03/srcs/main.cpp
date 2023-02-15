@@ -7,26 +7,30 @@
 
 
 std::ostream&   operator<<(std::ostream& out, const Bureaucrat& obj);
-std::ostream&   operator<<(std::ostream& out, const AForm* obj);
-
+std::ostream&	operator<<(std::ostream& out, const AForm* obj);
 
 int main () {
 
+	AForm*		rrf = NULL;
 
     try
     {
         Bureaucrat	bc1("Palpatine", 42);
 		Intern		randomIntern;
-		AForm*		rrf;
 
+		std::cout << std::endl;
 		rrf = randomIntern.makeForm("robotomy request", "Anakin");
+		std::cout << std::endl;
 		std::cout << rrf << std::endl;
+		std::cout << std::endl;
 
 		rrf->beSigned(&bc1);
 		rrf->execute(bc1);
 
 		// bc1.signForm(*rrf);
 		// bc1.executeForm(*rrf);
+
+    	delete rrf;
     }
     catch(Bureaucrat::GradeTooLowException &e)
     {
@@ -41,41 +45,57 @@ int main () {
 	catch (Bureaucrat::GradeTooLowToSignException &e)
 	{
 		std::cout << "Bureaucrat grade is too low to sign : " << e.what() << std::endl;
+		if (rrf != NULL)
+	    	delete rrf;
 		return 3;
 	}
 	catch (Bureaucrat::GradeTooLowToExecException &e)
 	{
 		std::cout << "Bureaucrat grade is too low to execute : " << e.what() << std::endl;
+		if (rrf != NULL)
+	    	delete rrf;
 		return 4;
 	}
 	catch(AForm::GradeTooLowException &e)
 	{
 		std::cout << "Bureaucrat grade is too low: " << e.what() << std::endl;
+		if (rrf != NULL)
+	    	delete rrf;
 		return 1;
 	}
 	catch(AForm::GradeTooHighException &e)
 	{
 		std::cout << "Bureaucrat grade is too high : " << e.what() << std::endl;
+		if (rrf != NULL)
+	    	delete rrf;
 		return 2;
 	}
 	catch (AForm::GradeTooLowToSignException &e)
 	{
 		std::cout << "Form grade is to high for bureaucrat to be signed : " << e.what() << std::endl;
+		if (rrf != NULL)
+	    	delete rrf;
 		return 3;
 	}
 	catch (AForm::GradeTooLowToExecException &e)
 	{
 		std::cout << "Form grade is to high for bureaucrat to be executed : " << e.what() << std::endl;
+		if (rrf != NULL)
+	    	delete rrf;
 		return 4;
 	}
 	catch(AForm::FormIsNotSigned &e)
 	{
 		std::cout << "/!\\ The form is not signed and can't be executed /!\\ : " << e.what() << std::endl;
+		if (rrf != NULL)
+	    	delete rrf;
 		return 5;
 	}
 	catch(AForm::RobotomyFailed &e)
 	{
 		std::cout << "Robotomy failed ! " << e.what() << std::endl;
+		if (rrf != NULL)
+	    	delete rrf;
 		return 6;
 	}
 	catch (AForm::InvalidFormRequest &e)
@@ -84,5 +104,5 @@ int main () {
 		std::cout << "Valid forms are : shrubberry creation / robotomy request / presidential pardon" << std::endl;
 		return 7;
 	}
-    return 0;
+	return 0;
 }

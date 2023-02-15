@@ -6,6 +6,10 @@
 
 class ShrubberyCreationForm : public AForm {
 
+    private :
+
+        std::string _target;
+
     public :
 
         ShrubberyCreationForm();

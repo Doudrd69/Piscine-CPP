@@ -10,14 +10,11 @@ Bureaucrat::Bureaucrat() : _name("default"), _grade(0) {
     return ;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) {
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 
     std::cout << "Bureaucrat constructor(string, int) called" << std::endl;
 	this->_grade = grade;
-    if (grade > 0 && grade < 151) {
-        this->_name = name;
-    }
-    else if (grade < 1)
+    if (grade < 1)
     {
         throw Bureaucrat::GradeTooHighException();
     }
@@ -25,19 +22,18 @@ Bureaucrat::Bureaucrat(std::string name, int grade) {
     {
         throw Bureaucrat::GradeTooLowException();
     }
-	return ;
+    else
+	    return ;
 }
-	
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) {
 
-    *this = obj;
+    this->_grade = obj.getGrade();
     return ;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj) {
 
-    this->_name = obj.getName();
     this->_grade = obj.getGrade();
     return (*this);
 }

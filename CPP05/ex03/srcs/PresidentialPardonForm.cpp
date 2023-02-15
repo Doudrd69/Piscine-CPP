@@ -4,41 +4,27 @@
 /*                 CONSTRUCTORS                */
 /***********************************************/
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm() {
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5) {
 
     std::cout << "PPF default constructor called" << std::endl;
-
-    setName("default");
-    setIsSigned(false);
-    setGradeToSign(25);
-    setGradeToExec(5);
     return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target) {
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target) {
 
     std::cout << "PPF constructor(string) called" << std::endl;
-    setName("Presidential Pardon Form");
-    setTarget(target);
-    setIsSigned(false);
-    setGradeToSign(25);
-    setGradeToExec(5);
     return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj) : AForm(obj) {
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj) : AForm(obj.getName(), obj.getGradeToSign(), obj.getGradeToExec()), _target(obj._target) {
 
-    *this = obj;
+    std::cout << "PPF copy constructor" << std::endl;
     return ;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj) {
 
-    setName(obj.getName());
-    setTarget(obj.getTarget());
-    setIsSigned(obj.getIsSigned());
-    setGradeToSign(obj.getGradeToSign());
-    setGradeToExec(obj.getGradeToExec());
+    this->_target = obj._target;
     return (*this);
 }
 
@@ -57,10 +43,10 @@ void    PresidentialPardonForm::execute(const Bureaucrat& exec) const {
     if ((exec.getGrade() <= this->getGradeToExec()) && this->getIsSigned() == true)
     {
         std::cout << exec.getName() << " execute " << this->getName() << " : ";
-        std::cout << this->getTarget() << " was forgiven by Zaphod Beeblebrox" << std::endl;
+        std::cout << this->_target << " was forgiven by Zaphod Beeblebrox" << std::endl;
     }
     else if (exec.getGrade() > this->getGradeToExec())
-        throw AForm::GradeTooLowToExecException();
+        throw AForm::GradeTooLowException();
     else
         throw AForm::FormIsNotSigned();
     return ;
