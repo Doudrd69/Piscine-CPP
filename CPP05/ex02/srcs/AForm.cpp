@@ -4,40 +4,34 @@
 /*                 CONSTRUCTORS                */
 /***********************************************/
 
-AForm::AForm() : _name("default"), _target("default"), _isSigned(false), _gradeToSign(150), _gradeToExec(150) {
+AForm::AForm() : _name("default"),  _isSigned(false), _gradeToSign(150), _gradeToExec(150) {
 
     std::cout << "Form default constructor called" << std::endl;
     return ;
 }
 
-AForm::AForm(const std::string target) {
+AForm::AForm(std::string name, int sign, int exec) : _name(name), _isSigned(false), _gradeToSign(sign), _gradeToExec(exec) {
 
     std::cout << "AForm constructor(string) called" << std::endl;
-    this->_name = "default form";
-    this->_target = target;
-    this->_isSigned = false;
 	return ;
 }
 
-AForm::AForm(const AForm& obj) {
+AForm::AForm(const AForm& obj) : _name(obj.getName()), _isSigned(false), _gradeToSign(obj.getGradeToSign()), _gradeToExec(obj.getGradeToExec()) {
 
-    *this = obj;
+    std::cout << "AForm copy constructor" << std::endl;
     return ;
 }
 
 AForm&   AForm::operator=(const AForm& obj) {
 
-    this->_name = obj.getName();
     this->_isSigned = obj.getIsSigned();
-    this->_gradeToSign = obj.getGradeToSign();
-    this->_gradeToExec = obj.getGradeToExec();
     return (*this);
 }
 
-std::ostream&	operator<<(std::ostream& out, const AForm* obj) {
+std::ostream&	operator<<(std::ostream& out, const AForm& obj) {
 
-	out << obj->getName() << " --> grade to sign : " << obj->getGradeToSign();
-    out << " / grade to exec : " << obj->getGradeToExec();  
+	out << obj.getName() << " --> grade to sign : " << obj.getGradeToSign();
+    out << " / grade to exec : " << obj.getGradeToExec();  
     return (out); 
 }
 
@@ -95,40 +89,13 @@ void    AForm::beSigned(Bureaucrat* bc) {
     return ;
 }
 
-void	AForm::upGrade() {
-
-	--this->_gradeToSign;
-    --this->_gradeToExec;
-	if (this->_gradeToSign < 1)
-		throw AForm::GradeTooHighException();		
-	else
-		std::cout << this->_name << " was promoted to grade " << this->_gradeToSign << std::endl;
-	return ;
-}
-
-void	AForm::downGrade() {
-
-	++this->_gradeToSign;
-    ++this->_gradeToExec;
-	if (this->_gradeToSign > 150)
-		throw AForm::GradeTooLowException();		
-	else
-		std::cout << this->_name << "was promoted to grade " << this->_gradeToSign << std::endl;
-	return ;
-}
-
 /***********************************************/
 /*                 ACCESSORS                   */
 /***********************************************/
 
-std::string  AForm::getName() const {
+const std::string&  AForm::getName() const {
 
     return (this->_name);
-}
-
-std::string  AForm::getTarget() const {
-
-    return (this->_target);
 }
 
 bool    AForm::getIsSigned() const {
@@ -146,32 +113,8 @@ int AForm::getGradeToExec() const {
     return (this->_gradeToExec);
 }
 
-void    AForm::setName(std::string value) {
-
-    this->_name = value;
-    return ;
-}
-
-void    AForm::setTarget(std::string value) {
-
-    this->_target = value;
-    return ;
-}
-
 void    AForm::setIsSigned(bool value) {
 
     this->_isSigned = value;
-    return ;
-}
-
-void    AForm::setGradeToSign(int value) {
-
-    this->_gradeToSign = value;
-    return ;
-}
-
-void    AForm::setGradeToExec(int value) {
-
-    this->_gradeToExec = value;
     return ;
 }

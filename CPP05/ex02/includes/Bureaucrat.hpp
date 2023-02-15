@@ -52,8 +52,8 @@ class Bureaucrat {
 
         private :
 
-            std::string _name;
-            int         _grade;
+            const std::string   _name;
+            int                 _grade;
 };
 
 #endif

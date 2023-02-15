@@ -46,7 +46,7 @@ class AForm {
         };
         
         AForm();
-        AForm(const std::string target);
+        AForm(std::string target, int sign, int exec);
         AForm(const AForm& obj);
         AForm& operator=(const AForm& obj);
         virtual ~AForm();
@@ -54,28 +54,19 @@ class AForm {
         virtual void        execute(Bureaucrat const & executor) const = 0;
         void                beSigned(Bureaucrat* bc);
 
-        std::string     	getName() const;
-        std::string         getTarget() const;
+        const std::string&	getName() const;
         bool				getIsSigned() const;
 		int					getGradeToSign() const;
 		int					getGradeToExec() const;
 
-        void                setName(std::string value);
-        void                setTarget(std::string value);
         void                setIsSigned(bool value);
-        void                setGradeToSign(int value);
-        void                setGradeToExec(int value);
-
-        void                upGrade();
-        void                downGrade();
 
         private :
 
-            std::string         _name;
-            std::string         _target;
+            const std::string   _name;
             bool                _isSigned;
-            int                 _gradeToSign;
-            int                 _gradeToExec;
+            const int           _gradeToSign;
+            const int           _gradeToExec;
 };
 
 #endif

@@ -6,30 +6,39 @@
 
 
 std::ostream&   operator<<(std::ostream& out, const Bureaucrat& obj);
-std::ostream&   operator<<(std::ostream& out, const AForm* obj);
-
+std::ostream&	operator<<(std::ostream& out, const AForm& obj);
 
 int main () {
 
 
     try
     {
-        Bureaucrat	bc1("Palpatine", 42);
+		std::cout << "== Bureaucrat creation ==" << std::endl;
+        Bureaucrat	bc1("Palpatine", 2);
         Bureaucrat  bc2("Yoda", 149);
-        AForm*		form1 = new PresidentialPardonForm("Obi-Wan");
-        AForm*      form2 = new RobotomyRequestForm("Anakin");
-        AForm*      form3 = new ShrubberyCreationForm("Naboo");
+		std::cout << std::endl;
+
+		std::cout << "== Form creation ==" << std::endl;
+		PresidentialPardonForm		form1("Anakin");
+		ShrubberyCreationForm       form2("Naboo");
+		RobotomyRequestForm         form3("Doku");
+		std::cout << std::endl;
+
         std::cout << bc1 << std::endl;
         std::cout << bc2 << std::endl;
+		std::cout << std::endl;
 		std::cout << form1 << std::endl;
 		std::cout << form2 << std::endl;
-        std::cout << form3 << std::endl;
+		std::cout << form3 << std::endl;
+		std::cout << std::endl;
 
-		bc1.signForm(*form3);
-		bc1.executeForm(*form3);
+		// form1.beSigned(&bc1);
+		// form1.execute(bc1);
 
-		// form3->beSigned(&bc1);
-		// form3->execute(bc1);
+		bc1.signForm(form1);
+		bc1.executeForm(form1);
+
+		std::cout << std::endl;
     }
     catch(Bureaucrat::GradeTooLowException &e)
     {
@@ -81,5 +90,6 @@ int main () {
 		std::cout << "Robotomy failed ! " << e.what() << std::endl;
 		return 6;
 	}
+
     return 0;
 }

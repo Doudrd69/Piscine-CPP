@@ -4,41 +4,27 @@
 /*                 CONSTRUCTORS                */
 /***********************************************/
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm() {
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 75, 45) {
 
     std::cout << "RRF default constructor called" << std::endl;
-
-    setName("default");
-    setIsSigned(false);
-    setGradeToSign(72);
-    setGradeToExec(45);
     return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm(target) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 75, 45), _target(target) {
 
     std::cout << "RRF constructor(string) called" << std::endl;
-    setName("Robotomy Request Form");
-    setTarget(target);
-    setIsSigned(false);
-    setGradeToSign(75);
-    setGradeToExec(45);
     return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) : AForm(obj) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) : AForm(obj.getName(), obj.getGradeToSign(), obj.getGradeToExec()), _target(obj._target) {
 
-    *this = obj;
+    std::cout << "RRF copy constructor" << std::endl;
     return ;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& obj) {
 
-    setName(obj.getName());
-    setTarget(obj.getTarget());
-    setIsSigned(obj.getIsSigned());
-    setGradeToSign(obj.getGradeToSign());
-    setGradeToExec(obj.getGradeToExec());
+    this->_target = obj._target;
     return (*this);
 }
 
@@ -61,7 +47,7 @@ void    RobotomyRequestForm::execute(const Bureaucrat& exec) const {
         srand(time(0));
         int success = rand() % 100 + 1;
         if (success <= 50)
-            std::cout << "==> Target " << this->getTarget() << " has been successfully robotized." << std::endl;
+            std::cout << "==> Target " << this->_target << " has been successfully robotized." << std::endl;
         else
             throw AForm::RobotomyFailed();
     }
