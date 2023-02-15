@@ -35,14 +35,11 @@ void    Span::addNumber(int value) {
 
 void    Span::addLotofNumbers(unsigned int number) {
 
-    int rvalue;
-    srand(time(0));
+    std::srand(time(NULL));
+    _cont.resize(number);
 
-    for (unsigned int i = 0; i < number; i++)
-    {
-        rvalue = rand();
-        this->_cont.push_back(rvalue);
-    }
+        for (std::vector<unsigned int>::iterator it = _cont.begin(); it != _cont.end(); ++it)
+            *it = std::rand();
 }
 
 int Span::shortestSpan() {
