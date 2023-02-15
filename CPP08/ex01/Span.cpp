@@ -20,7 +20,8 @@ Span& Span::operator=(const Span& obj) {
 
 void    Span::addNumber(int value) {
 
-    this->_cont.push_back(value);
+    if (std::find(this->_cont.begin(), this->_cont.end(), value) != 0)
+        this->_cont.push_back(value);
     return ;
 }
 
