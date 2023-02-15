@@ -4,13 +4,11 @@ std::ostream&   operator<<(std::ostream& out, const Bureaucrat& obj);
 
 int main () {
 
-    std::string* mdr;
+    std::string name = "Palpatine";
 
-
-    mdr = "Macron";
     try
     {
-        Bureaucrat test(mdr, 150);
+        Bureaucrat test(name, 140);
         std::cout << test << std::endl;
         test.downGrade();
         std::cout << test << std::endl;

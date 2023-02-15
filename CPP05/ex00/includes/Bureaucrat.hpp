@@ -22,12 +22,12 @@ class Bureaucrat {
         };
 
         Bureaucrat();
-        Bureaucrat(std::string* name, int grade);
+        Bureaucrat(std::string name, int grade);
         Bureaucrat(const Bureaucrat& obj);
         Bureaucrat& operator=(const Bureaucrat& obj);
         ~Bureaucrat();
 
-        const std::string&   getName(void) const;
+        const std::string&	getName(void) const;
         int                 getGrade(void) const;
 
         void                upGrade();
