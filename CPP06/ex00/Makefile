@@ -1,9 +1,7 @@
 CC = c++
 FLAGS = -Wall -Wextra -Werror
 
-SRCS =	srcs/main.cpp
-
-# INCS =	includes/Convert.hpp
+SRCS = main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
