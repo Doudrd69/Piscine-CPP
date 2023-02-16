@@ -3,6 +3,15 @@
 #include <sstream>
 #include <iomanip>
 #include <cmath>
+#include <climits>
+
+bool	my_isprint(int value) {
+
+	if (value >= 32 && value <= 126)
+		return true;
+	else
+		return false;
+}
 
 bool	check_isnan_isinf(double value) {
 
@@ -25,13 +34,17 @@ int main(int argc, char **argv) {
 		std::string	tmp = argv[1];
 		int	tmp_length = tmp.length();
 
-
 		/******************** INTEGER ********************/
-		int	i_input = std::strtol(argv[1], &end, 10);
+		long int	i_input = std::strtol(argv[1], &end, 10);
+		if (i_input > 2147483647  || i_input < -2147483648)
+		{
+			std::cout << "Value is out of INT range" << std::endl;
+			return 1;
+		}
 		if (*end == 0) {
 
-			std::cout << "i_input ! " << i_input << std::endl;
-			if (std::isprint(i_input))
+			std::cout << "==> Integer : " << i_input << std::endl;
+			if (my_isprint(i_input) == true)
 				std::cout << "Char: '" << static_cast<char>(i_input) << "'" << std::endl;
 			else
 				std::cout << "Char: non displayable" << std::endl;
@@ -43,13 +56,18 @@ int main(int argc, char **argv) {
 
 		/******************** FLOAT ********************/
 		float	f_input = std::strtof(argv[1], &end);
+		if (f_input > __FLT_MAX__ || f_input < __FLT_MIN__)
+		{
+			std::cout << "Value out of FLOAT range" << std::endl;
+			return 1;
+		}
 		int length = end - argv[1];
 		if ((length == tmp_length - 1) && *end == 'f' && *(end + 1) == '\0') {
 
 			if (check_isnan_isinf(f_input) == true)
 				return 1;
-			std::cout << "f_input ! " << f_input << std::endl;
-			if (std::isprint(f_input))
+			std::cout << "==> Float : " << f_input << std::endl;
+			if (my_isprint(f_input))
 				std::cout << "Char: '" << static_cast<char>(f_input) << "'" << std::endl;
 			else
 				std::cout << "Char: non displayable" << std::endl;
@@ -61,12 +79,17 @@ int main(int argc, char **argv) {
 
 		/******************** DOUBLE ********************/
 		double	d_input = std::strtod(argv[1], &end);
+		if (d_input > __DBL_MAX__ || d_input < __DBL_MIN__)
+		{
+			std::cout << "Value is out of DOUBLE range" << std::endl;
+			return 1;
+		}
 		if (*end == 0) {
 
 			if (check_isnan_isinf(d_input) == true)
 				return 1;
-			std::cout << "d_input ! " << d_input << std::endl;
-			if (std::isprint(d_input))
+			std::cout << "==> Double : " << d_input << std::endl;
+			if (my_isprint(d_input))
 				std::cout << "Char: '" << static_cast<char>(d_input) << "'" << std::endl;
 			else
 				std::cout << "Char: non displayable" << std::endl;
@@ -79,7 +102,7 @@ int main(int argc, char **argv) {
 		/******************** CHAR ********************/
 		if (argv[1][0] && !argv[1][1]) {
 
-			std::cout << "char_input ! " << argv[1] << std::endl;
+			std::cout << "==> Char : " << argv[1] << std::endl;
 			std::cout << "Char: '" << argv[1][0] << "'" << std::endl;
 			std::cout << "Int: " << static_cast<int>(argv[1][0]) << std::endl;
 			std::cout << "Float: " << std::fixed << std::setprecision(1) << static_cast<float>(argv[1][0]) << "f" << std::endl;
