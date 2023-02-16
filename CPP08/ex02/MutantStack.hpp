@@ -3,72 +3,37 @@
 
 #include <iostream>
 #include <algorithm>
+#include <vector>
 #include <stack>
 
-template<typename T>
-class MutantStack : std::stack<T> {
+template<typename T, typename Container = std::vector<T> >
+class MutantStack {
 
     public :
+    
+        using iterator = typename Container::iterator;
 
-        MutantStack();
-        MutantStack(const MutantStack& obj);
-        MutantStack& operator=(const MutantStack& obj);
-        ~MutantStack();
+        MutantStack(): _cntr() {};
+        MutantStack(const MutantStack& obj) {
 
-        struct Iterator
-        {
-            using iterator_category = std::forward_iterator_tag;
-            using difference_type   = std::ptrdiff_t;
-            using value_type        = T;
-            using pointer           = T*;
-            using reference         = T&;
-
-            Iterator(pointer ptr) : _ptr(ptr) {} 
-
-            reference	operator*() const { return *_ptr; }
-            pointer		operator->() const ( return _ptr; )
-
-    		Iterator&	operator++() { m_ptr++; return *this; }  
-    		Iterator	operator++(int) { Iterator tmp = *this; ++(*this); return tmp; }
-
-            private :
-
-                _ptr;
+            this->_cntr = obj._cntr;
+            return ;
         };
 
-        void    push(const T value) {
+        bool    empty() { return _cntr.empty(); };
+        int     size() { return _cntr.size(); };
+        void    push(const T& value) { _cntr.push_back(value); };
+        T&      top() { return _cntr.top(); };
+        void    pop() { _cntr.pop_back(); };
 
-            std::cout << "push" << std::endl;
-        }
-
-        void    top(void) {
-
-            std::cout << "top" << std::endl;
-        } 
-
-        void    pop(void) {
-
-            std::cout << "pop" <<std::endl;
-        }
-
-        int size(void) {
-
-            std::cout << "size" << std::endl;
-        }
-
-        void    begin(void) {
-
-            std::cout << "begin" << std::endl;
-        }
-
-        void    end(void) {
-
-            std::cout << "end" << std::endl;
-        }
+        iterator begin() { return _cntr.begin(); };
+        iterator end() { return _cntr.end(); };
 
     private :
 
-        std::stack<T> _mStack;
+        Container _cntr;
 };
+
+//(reference objects with similar properties to pointers)
 
 #endif
