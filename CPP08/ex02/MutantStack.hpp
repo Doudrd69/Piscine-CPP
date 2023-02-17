@@ -3,37 +3,26 @@
 
 #include <iostream>
 #include <algorithm>
+#include <list>
 #include <vector>
 #include <stack>
 
-template<typename T, typename Container = std::vector<T> >
-class MutantStack {
+template<typename T>
+class MutantStack : public std::stack<T> {
 
     public :
-    
-        using iterator = typename Container::iterator;
 
-        MutantStack(): _cntr() {};
-        MutantStack(const MutantStack& obj) {
+        typedef typename std::stack<T>::container_type::iterator iterator;
 
-            this->_cntr = obj._cntr;
-            return ;
+        MutantStack(): std::stack<T>() {};
+        MutantStack(const MutantStack& obj) : std::stack<T>(obj) {}
+        MutantStack& operator=(const MutantStack& obj) {
+            std::stack<T>::operator=(obj);
+            return *this;
         };
 
-        bool    empty() { return _cntr.empty(); };
-        int     size() { return _cntr.size(); };
-        void    push(const T& value) { _cntr.push_back(value); };
-        T&      top() { return _cntr.top(); };
-        void    pop() { _cntr.pop_back(); };
-
-        iterator begin() { return _cntr.begin(); };
-        iterator end() { return _cntr.end(); };
-
-    private :
-
-        Container _cntr;
+        iterator begin() { return this->c.begin(); };
+        iterator end() { return this->c.end(); };
 };
-
-//(reference objects with similar properties to pointers)
 
 #endif
