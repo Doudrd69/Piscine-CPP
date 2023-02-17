@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
 
 		/******************** FLOAT ********************/
 		float	f_input = std::strtof(argv[1], &end);
-		if (f_input > __FLT_MAX__ || f_input < __FLT_MIN__)
+		if (f_input > HUGE_VAL)
 		{
 			std::cout << "Value out of FLOAT range" << std::endl;
 			return 1;
@@ -79,7 +79,7 @@ int main(int argc, char **argv) {
 
 		/******************** DOUBLE ********************/
 		double	d_input = std::strtod(argv[1], &end);
-		if (d_input > __DBL_MAX__ || d_input < __DBL_MIN__)
+		if (d_input > HUGE_VAL)
 		{
 			std::cout << "Value is out of DOUBLE range" << std::endl;
 			return 1;

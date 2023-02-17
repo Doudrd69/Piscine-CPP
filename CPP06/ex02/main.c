@@ -4,6 +4,7 @@
 #include "C.hpp"
 
 #include <iostream>
+#include <new>
 
 Base* generate(void) {
 
@@ -14,13 +15,13 @@ Base* generate(void) {
     
     case 0:
       std::cout << r << " --> generate type A" << std::endl;
-      return new A();
+      return new(std::nothrow) A();
     case 1:
       std::cout << r << " --> generate type B" << std::endl;
-      return new B();
+      return new(std::nothrow) B();
     case 2:
       std::cout << r << " --> generate type C" << std::endl;
-      return new C();
+      return new(std::nothrow) C();
   }
 
   return NULL;
@@ -81,6 +82,12 @@ void  identify_ref(Base& p) {
 int main() {
 
     Base* base = generate();
+
+    if (!base)
+    {
+        std::cout << "Error : new failed" << std::endl;
+        return 1;
+    }
 
     identify_ptr(base);
     identify_ref(*base);
