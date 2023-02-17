@@ -92,5 +92,7 @@ int main() {
     identify_ptr(base);
     identify_ref(*base);
 
+    delete base;
+
     return 0;
 }
