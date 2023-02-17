@@ -37,6 +37,8 @@ int main(void) {
 
     std::string strValues[] = {"anakin", "kit fisto", "palpatine", "qui-gon", "jar-jar"};
     Array<std::string> strArray(MAX_VAL);
+    if (!strArray.getArray())
+        return 1;
 
     for (unsigned int i = 0; i < MAX_VAL; i++)
         strArray[i] = strValues[i];
@@ -44,6 +46,8 @@ int main(void) {
     std::cout << strArray << std::endl;
 
     Array<std::string> tmp = strArray;
+    if (!tmp.getArray())
+        return 1;
 
     std::cout << tmp << std::endl;
 
