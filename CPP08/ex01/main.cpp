@@ -4,7 +4,7 @@ int main() {
 
     try
     {
-        unsigned int n = 10000;
+        unsigned int n = 5;
 
         Span sp(n);
 
@@ -14,7 +14,7 @@ int main() {
         // sp.addNumber(9);
         // sp.addNumber(11);
 
-        sp.addLotofNumbers(n);
+        //sp.addLotofNumbers(n);
 
         std::cout << "Shortest span --> " << sp.shortestSpan() << std::endl;
         std::cout << "Longest span  --> " << sp.longestSpan() << std::endl;
@@ -28,7 +28,7 @@ int main() {
     }
     catch(Span::InvalidContainerSize &e)
     {
-        std::cerr << "Error : the container as no value or has a size of 1: " << e.what() << '\n';
+        std::cerr << "Error : the container has no value or has a size of 1: " << e.what() << '\n';
         return 2;
     }
 }
