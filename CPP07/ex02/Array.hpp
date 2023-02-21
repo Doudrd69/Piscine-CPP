@@ -21,12 +21,13 @@ class Array {
 
             std::cout << "\nDefault constructor" << std::endl;
             this->_array = NULL;
+            this->_size = 0;
         }
 
         Array(unsigned int n) {
 
             std::cout << "\nConstructor(u_int n) constructor : " << n << std::endl;
-            this->_array = new(std::nothrow) T[n];
+            this->_array = new T[n];
             this->_size = n;
         }
 
@@ -34,7 +35,7 @@ class Array {
 
             std::cout << "\nCopy constructor" << std::endl;
             this->_size = obj._size;
-            this->_array = new(std::nothrow) T[this->_size];
+            this->_array = new T[this->_size];
             for (unsigned int i = 0; i < this->_size; i++)
             {
                 if (i >= this->_size)
@@ -50,7 +51,7 @@ class Array {
             {
                 this->_size = obj._size;
                 delete[] this->_array;
-                this->_array = new(std::nothrow) T[this->_size];
+                this->_array = new T[this->_size];
                 for (unsigned int i = 0; i < this->_size; i++)
                 {
                     if (i >= this->_size)
@@ -75,15 +76,13 @@ class Array {
             return (this->_size);
         }
 
-        T   getValue(int index) const {
+        T   getValue(unsigned int index) const {
 
+            if (index >= this->_size)
+                throw Array::InvalidIndex();
             return (this->_array[index]);
         }
 
-        T*  getArray() const {
-
-            return (this->_array);
-        }
 
     private :
 

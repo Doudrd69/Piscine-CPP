@@ -7,7 +7,7 @@ INCS =	Iter.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-%.o : %.cpp
+%.o : %.cpp $(INCS)
 	$(CC) $(FLAGS) -std=c++98 -c $< -o $@
 
 NAME = Iter
@@ -15,7 +15,7 @@ NAME = Iter
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(FLAGS) -std=c++98 -o $(NAME) $(OBJS)
+	$(CC) $(FLAGS) $(INCS) -std=c++98 -o $(NAME) $(OBJS)
 
 clean :
 	rm -f $(OBJS)
