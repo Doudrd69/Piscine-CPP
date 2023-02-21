@@ -16,16 +16,22 @@ class Span {
                 virtual const char *what() const throw();
         };
 
+        class InvalidContainerSize : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+
         Span() {};
         Span(unsigned int N);
         Span(const Span& obj);
         Span& operator=(const Span& obj);
         ~Span() {};
 
-        void    addNumber(int value);
-        void    addLotofNumbers(unsigned int number);
-        int     shortestSpan();
-        int     longestSpan();
+        void            addNumber(unsigned int value);
+        void            addLotofNumbers(unsigned int n);
+        long int        shortestSpan();
+        long int        longestSpan();
     
     private :
 

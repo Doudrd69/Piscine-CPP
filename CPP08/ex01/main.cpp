@@ -6,7 +6,7 @@ int main() {
     {
         unsigned int n = 10000;
 
-        Span sp = Span(n);
+        Span sp(n);
 
         // sp.addNumber(6);
         // sp.addNumber(3);
@@ -16,14 +16,19 @@ int main() {
 
         sp.addLotofNumbers(n);
 
-        std::cout << sp.shortestSpan() << std::endl;
-        std::cout << sp.longestSpan() << std::endl;
+        std::cout << "Shortest span --> " << sp.shortestSpan() << std::endl;
+        std::cout << "Longest span  --> " << sp.longestSpan() << std::endl;
 
         return 0;
     }
     catch(Span::SameValueDetected &e)
     {
         std::cerr << "Error : the container can't have two same values: " << e.what() << '\n';
+        return 1;
     }
-    
+    catch(Span::InvalidContainerSize &e)
+    {
+        std::cerr << "Error : the container as no value or has a size of 1: " << e.what() << '\n';
+        return 2;
+    }
 }
